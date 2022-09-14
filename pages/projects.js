@@ -6,6 +6,31 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <section class="text-white bg-gray-900">
+
+      <header class="bg-slate-800">
+        <div class="px-4 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex-1 md:flex md:items-center md:gap-12">
+              <a class="block text-blue-600" href="/">
+                <span class="sr-only">Home</span>
+                <svg class="h-8 w-8 text-blue-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="5 12 3 12 12 3 21 12 19 12" />  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+              </a>
+              </div>
+
+              <div class="md:flex md:items-center md:gap-12">
+                <div class="flex items-center gap-4">
+                  <div class="sm:gap-4 sm:flex">
+                  <a class="px-5 py-2.5 text-sm font-medium text-white bg-zinc-600 rounded-md shadow" href="/">
+                    Connect Wallet
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
     <div class="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
       <div class="max-w-lg mx-auto text-center">
         <h2 class="text-3xl font-bold sm:text-4xl">PLACEHOLDER PROJECTS PAGE (Work in Progress)</h2>
