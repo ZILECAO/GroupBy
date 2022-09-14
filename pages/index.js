@@ -44,7 +44,7 @@ export default function Home() {
           </h1>
 
           <h1 class="text-2xl font-extrabold text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
-              Web3 Developer
+              Web3 Development Portfolio
           </h1>
     
           <p class="max-w-xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
@@ -54,7 +54,9 @@ export default function Home() {
 
           <p class="max-w-xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
             Connect your crypto wallet and claim a free NFT! {"\n"}
-            
+            <a class= "text-yellow-500">
+            *work in progress*
+            </a>
           </p>
           
     
