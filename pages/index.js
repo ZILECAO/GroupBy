@@ -52,7 +52,7 @@ export default function Home() {
             
           </p>
 
-          <p class="max-w-xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
+          <p class="max-w-2xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
             Connect your crypto wallet and claim a free NFT! {"\n"}
             <a class= "text-yellow-500">
             *work in progress*
@@ -136,7 +136,7 @@ export default function Home() {
 
           
 
-          <p class="max-w-lg mx-auto text-xs text-gray-500">
+          <p class="max-w-xl mx-auto text-xs text-gray-500">
             <span class="block mt-4"> &copy; 2022 Zile Cao | Special thanks to my mentor, Adam Sobotka, for his guidance on this project.       </span>
           </p>
         </div>
