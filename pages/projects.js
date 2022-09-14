@@ -37,12 +37,10 @@ export default function Projects() {
       {/* Main Body Element */}
       <div class="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-lg mx-auto text-center">
-          <h2 class="text-3xl font-bold sm:text-4xl">Kickstart your marketing</h2>
+          <h2 class="text-3xl font-bold sm:text-4xl">*WORK IN PROGRESS*</h2>
 
           <p class="mt-4 text-gray-300">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
-            aliquam doloribus nesciunt eos fugiat. Vitae aperiam fugit consequuntur
-            saepe laborum.
+            Check back later :D
           </p>
         </div>
 
