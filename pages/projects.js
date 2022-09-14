@@ -316,8 +316,8 @@ export default function Projects() {
 
           
 
-          <p class="max-w-lg mx-auto text-xs text-gray-500">
-            <span class="block mt-4"> Zile Cao | UPenn &apos;24, Econ & CS       </span>
+          <p class="max-w-xl mx-auto text-xs text-gray-500">
+            <span class="block mt-4"> &copy; 2022 Zile Cao | Special thanks to my mentor, Adam Sobotka, for his guidance on this project.       </span>
           </p>
         </div>
       </div>
