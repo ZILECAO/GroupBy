@@ -48,7 +48,7 @@ export default function Home() {
           </h1>
     
           <p class="max-w-xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
-            Built with the Next.js framework using React. {"\n"}
+            Built with the Next.js and Tailwind CSS framework. {"\n"}
             
           </p>
 
