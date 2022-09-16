@@ -6,13 +6,17 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <section class="text-white bg-slate-900">
+
+    <Head>
+     <link rel="shortcut icon" href="../favicon.ico" />
+    </Head>
       
       {/* Top Navigation Element */}
       <header class="bg-slate-800">
         <div class="px-4 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex-1 md:flex md:items-center md:gap-12">
-              
+
               <Link href="/">
                 <a class="block text-blue-600 hover:text-blue-700">
                   <span class="sr-only">Home</span>
