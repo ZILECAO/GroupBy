@@ -116,7 +116,7 @@ export default function Home() {
     
           <div class="flex flex-wrap justify-center mt-8 gap-4">
           <Link href="/projects">
-            <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
+            <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-bounce">
               My Projects
             </a>
           </Link>
