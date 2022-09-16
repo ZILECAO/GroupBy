@@ -3,23 +3,20 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
-export default function Home() {
-  return (
-    <section class="text-white bg-slate-900">
-      
-      {/* Top Navigation Element */}
+export default function Projects() {
+    return (
       <header class="bg-slate-800">
         <div class="px-4 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <div class="flex-1 md:flex md:items-center md:gap-12">
               
               <Link href="/">
-                <a class="block text-blue-600 hover:text-blue-700">
-                  <span class="sr-only">Home</span>
-                  <svg class="h-8 w-8 text-blue-600 hover:text-blue-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="5 12 3 12 12 3 21 12 19 12" />  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                </a>
+              <a class="">
+                <div class="w-10 rounded-full">
+                  <img src="https://media-exp1.licdn.com/dms/image/C4D03AQF7ce423jf7oQ/profile-displayphoto-shrink_800_800/0/1642031812310?e=1668643200&v=beta&t=NczWAD7miX1LmX7_2dwFLavWkjCNK2lfLn_lHhLktz0" />
+                </div>
+              </a>
               </Link>
-
             </div>
           
             <div class="flex items-center gap-6">
@@ -76,7 +73,7 @@ export default function Home() {
               <div class="md:flex md:items-center md:gap-12">
                 <div class="flex items-center gap-4">
                   <div class="sm:gap-4 sm:flex">
-                    <a class="px-5 py-2.5 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow cursor-not-allowed">
+                    <a class="px-5 py-2.5 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">
                       Connect Wallet
                     </a>
                   </div>
@@ -87,52 +84,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </header>
 
-
-      {/* Main Body Element */}
-      <div class="px-4 py-40 mx-auto max-w-screen-xl lg:h-screen lg:items-center lg:flex">
-        <div class="max-w-3xl mx-auto text-center">
-          <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
-            Zile Cao {"\n"} 
-          </h1>
-
-          <h1 class="text-2xl font-extrabold text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
-              Web3 Development Portfolio
-          </h1>
-    
-          <p class="max-w-xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
-            Built with the Next.js and Tailwind CSS framework. {"\n"}
-            
-          </p>
-
-          <p class="max-w-2xl mx-auto mt-4 sm:leading-relaxed sm:text-xl">
-            Connect your crypto wallet and claim a free NFT! {"\n"}
-            <a class= "text-yellow-500">
-            *work in progress*
-            </a>
-          </p>
-          
-    
-          <div class="flex flex-wrap justify-center mt-8 gap-4">
-          <Link href="/projects">
-            <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
-              My Projects
-            </a>
-          </Link>
-    
-            <a
-              class="block w-full px-12 py-3 text-sm font-medium text-white border border-blue-600 rounded sm:w-auto hover:bg-blue-600 active:bg-blue-500 focus:outline-none focus:ring"
-              href="https://github.com/ZILECAO/zile-portfolio"
-              >
-                View Webpage Code
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Element */}
-      <footer class="text-center bg-slate-800">
+        {/* Footer Element */}
+        <footer class="text-center bg-slate-800">
       <div class="px-4 py-2 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2">
           <div class="flex justify-center gap-6 ">
@@ -197,8 +151,7 @@ export default function Home() {
       </div>
     </footer>
 
-    </section>  
+      </header>
 
-    
-  )
-}
+    )
+  }
