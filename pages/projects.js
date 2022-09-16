@@ -148,7 +148,7 @@ export default function Projects() {
             <h3 class="mt-4 text-xl font-bold text-white">Exploring the Global Nature of Blockchain</h3>
 
             <p class="mt-1 text-sm text-gray-400">
-              Authored a blog featuring my experiences interning remotely for NexChange Group, documenting what it's like to work for a company abroad during COVID-19.
+              Authored a blog featuring my experiences interning remotely for NexChange Group, documenting what it&apos;s like to work for a company abroad during COVID-19.
             </p>
           </a>
 
