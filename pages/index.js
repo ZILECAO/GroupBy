@@ -28,7 +28,7 @@ export default function Home() {
           </p>
 
           <p class="pb-6 font-medium max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
-            I am a junior at the University of Pennsylvania currently studying economics and computer science. I am interested in opportunities in Web3 development or product management. {"\n"}
+            I am a junior at the University of Pennsylvania currently studying economics and computer science. I am interested in internship opportunities in Web3 development or product management. {"\n"}
             
           </p>
           
