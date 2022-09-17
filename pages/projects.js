@@ -8,7 +8,7 @@ export default function Projects() {
     <section class="text-white ">
       
       {/* Main Body Element */}
-      <div class="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+      <div class="px-4 pt-12 pb-32 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-lg mx-auto text-center">
           <h2 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
           Projects {"\n"} 
@@ -16,13 +16,13 @@ export default function Projects() {
         </div>
 
 
-        <p class="mt-6 text-xl text-white">
+        <p class="mt-6 text-xl text-white font-bold">
             Blogs
           </p>
 
         <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <a
-            class="block p-8 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10 animate-pulse"
+            class="block p-8 border backdrop-brightness-75 border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
             href="https://medium.com/bridxe/the-full-guide-on-how-to-develop-and-deploy-a-simple-escrow-marketplace-smart-contract-ab3e25919f75"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-600">
@@ -39,7 +39,7 @@ export default function Projects() {
           </a>
 
           <a
-            class="block p-8 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
+            class="block p-8 border backdrop-brightness-75 border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
             href="/services/digital-campaigns"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-500">
@@ -56,7 +56,7 @@ export default function Projects() {
 
 
           <a
-            class="block p-8 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
+            class="block p-8 border backdrop-brightness-75 border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
             href="/services/digital-campaigns"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-blue-500">
@@ -76,14 +76,14 @@ export default function Projects() {
 
 
 
-        <p class="mt-12 text-xl text-white">
+        <p class="mt-12 text-xl text-white font-bold">
             Websites
         </p>
         
 
         <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <a
-            class="block p-8 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10 animate-pulse"
+            class="block p-8 backdrop-brightness-75 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
             href="https://www.metamanor.art/"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 text-purple-500">
@@ -100,7 +100,7 @@ export default function Projects() {
           </a>
 
           <a
-            class="block p-8 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
+            class="block p-8 backdrop-brightness-75 border border-gray-800 shadow-xl transition rounded-xl hover:shadow-blue-500/10 hover:border-blue-500/10"
             href="https://friendly-blini-65db18.netlify.app/"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-yellow-500">

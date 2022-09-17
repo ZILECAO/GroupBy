@@ -5,15 +5,16 @@ import Link from 'next/link'
 
 export function Nav() {
     {/* Top Navigation Element */}
-    return (<header class="bg-slate-800">
-    <div class="px-4 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+    return (<header class="py-1 backdrop-brightness-75">
+    <div class="px-6 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+      
       <div class="flex items-center justify-between h-16">
         <div class="flex-1 md:flex md:items-center md:gap-12">
 
           <Link href="/">
             <a class="block text-blue-600 hover:text-blue-700">
               <span class="sr-only">Home</span>
-              <svg class="h-8 w-8 text-blue-600 hover:text-blue-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="5 12 3 12 12 3 21 12 19 12" />  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+              <svg class="h-8 w-8 text-blue-600 hover:text-blue-800/75"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="5 12 3 12 12 3 21 12 19 12" />  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
             </a>
           </Link>
 
@@ -21,7 +22,7 @@ export function Nav() {
       
         <div class="flex items-center gap-6">
           <a
-            class="text-blue-500 hover:text-blue-500/75"
+            class="text-blue-500 hover:text-blue-700/75"
             href="https://twitter.com/zile_cao"
             target="_blank"
             rel="noopener noreferrer"
@@ -40,7 +41,7 @@ export function Nav() {
           </a>
 
           <a
-            class="text-gray-900 hover:text-gray-900/75"
+            class="text-gray-700 hover:text-gray-800/75"
             href="https://github.com/ZILECAO/"
             target="_blank"
             rel="noopener noreferrer"
@@ -67,7 +68,7 @@ export function Nav() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            <svg class="h-8 w-8 text-blue-600 hover:text-blue-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />  <rect x="2" y="9" width="4" height="12" />  <circle cx="4" cy="4" r="2" /></svg>
+            <svg class="h-8 w-8 text-blue-600 hover:text-blue-900"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />  <rect x="2" y="9" width="4" height="12" />  <circle cx="4" cy="4" r="2" /></svg>
           </a>
 
           <div class="md:flex md:items-center md:gap-12">
@@ -89,12 +90,12 @@ export function Nav() {
 export function Footer() {
     {/* Footer Element */}
     return (
-    <footer class="text-center bg-slate-800">
-    <div class="px-4 py-2 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+    <footer class="text-center backdrop-brightness-50">
+    <div class="px-4 pb-2 pt-4 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto space-y-2">
         <div class="flex justify-center gap-6 ">
           <a
-            class="text-blue-500 hover:text-blue-500/75"
+            class="text-blue-500 hover:text-blue-700/75"
             href="https://twitter.com/zile_cao"
             target="_blank"
             rel="noopener noreferrer"
@@ -113,7 +114,7 @@ export function Footer() {
           </a>
 
           <a
-            class="text-gray-900 hover:text-gray-900/75"
+            class="text-gray-700 hover:text-gray-800/75"
             href="https://github.com/ZILECAO/"
             target="_blank"
             rel="noopener noreferrer"
@@ -140,7 +141,7 @@ export function Footer() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            <svg class="h-8 w-8 text-blue-600 hover:text-blue-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />  <rect x="2" y="9" width="4" height="12" />  <circle cx="4" cy="4" r="2" /></svg>
+            <svg class="h-8 w-8 text-blue-600 hover:text-blue-900"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />  <rect x="2" y="9" width="4" height="12" />  <circle cx="4" cy="4" r="2" /></svg>
           </a>
           
         </div>
