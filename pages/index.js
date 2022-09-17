@@ -13,7 +13,7 @@ export default function Home() {
 
       {/* Main Body Element */}
       <div class="px-4 pt-20 pb-60 mx-auto max-w-screen-xl lg:h-screen lg:items-center lg:flex">
-        <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl">
+        <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
           <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
             Zile Cao {"\n"} 
           </h1>
