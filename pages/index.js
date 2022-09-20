@@ -38,11 +38,11 @@ export default function Home() {
           </p>
 
           <p class="text-blue-500 font-medium max-w-2xl mx-auto mt-4 sm:leading-relaxed sm:text-md">
-            Connect your crypto wallet and claim a free NFT! {"\n"}
+            Connect your crypto wallet and claim a free MetaManor NFT! {"\n"}
           </p>
 
-          <p class= "font-medium mt-2 text-yellow-500">
-            {"\n"} *work in progress*
+          <p class= "font-medium text-sm mt-2 text-yellow-500">
+            {"\n"} * Must have MetaMask installed. Mint button will not appear until wallet is connected. Make sure you are on the Ethereum Mainnet. Requires a small amount for gas fees. *
           </p>
           
     
