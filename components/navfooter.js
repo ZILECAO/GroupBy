@@ -69,7 +69,7 @@ export function Nav() {
           <div class="flex-1 md:flex md:items-center md:gap-12">
 
             <Link href="/">
-              <a class="block text-blue-600 hover:text-blue-700">
+              <a class="block items-center text-blue-600 hover:text-blue-700">
                 <span class="sr-only">Home</span>
                 <svg class="h-8 w-8 text-blue-600 hover:text-blue-800/75"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="5 12 3 12 12 3 21 12 19 12" />  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
               </a>
@@ -77,7 +77,7 @@ export function Nav() {
 
           </div>
         
-          <div class="flex items-center gap-6">
+          <div class="flex items-center gap-4 justify-end">
             <a
               class="text-blue-500 hover:text-blue-700/75"
               href="https://twitter.com/zile_cao"
@@ -128,25 +128,18 @@ export function Nav() {
               <svg class="h-8 w-8 text-blue-600 hover:text-blue-900"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />  <rect x="2" y="9" width="4" height="12" />  <circle cx="4" cy="4" r="2" /></svg>
             </a>
 
-            <div class="md:flex md:items-center md:gap-12">
-              <div class="flex items-center gap-4">
-                <div class="sm:gap-4 sm:flex">
-                  <a class="px-5 py-2.5 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">
-                    <button onClick={connectAccounts}>Connect Wallet</button>
-                  </a>
+            
+            <a class="px-5 py-2.5 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">
+              <button onClick={connectAccounts}>Connect Wallet</button>
+            </a>
                   
-                  <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow">
-                    {accounts.length && (
-                        <div>
-                          <button onClick={handleMint}>Mint</button>
-                        </div>
-                    )}
-                  </a>
-
-                </div>
-                
-              </div>
-            </div>
+            <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow">
+               {accounts.length && (
+                 <div>
+                   <button onClick={handleMint}>Mint</button>
+                 </div>
+                )}
+            </a>
           
           </div>
         </div>
