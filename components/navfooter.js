@@ -27,37 +27,7 @@ export function Nav() {
     }, []);
 
 
-    //Minting functionality
-    const [mintAmount, setMintAmount] =  useState(1);
-
-    async function handleMint() {
-      if (window.ethereum) {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(
-          metaManorAddress,
-          metaManorABI,
-          signer
-        );
-
-        try {
-          const response = await contract.mint(BigNumber.from(mintAmount));
-            <div
-              class="p-4 text-green-700 border rounded border-green-900/10 bg-green-50"
-              role="alert"
-            >
-              <strong class="text-sm font-medium"> Mint Success! </strong>
-            </div>
-        } catch {
-            <div
-              class="p-4 text-red-700 border rounded border-red-900/10 bg-red-50"
-              role="alert"
-            >
-              <strong class="text-sm font-medium"> Mint Failed :C </strong>
-            </div>
-        }
-      }
-    }  
+    
   
 
   // Top Navigation Element
@@ -132,14 +102,7 @@ export function Nav() {
             <a class="px-5 py-2.5 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">
               <button onClick={connectAccounts}>Connect Wallet</button>
             </a>
-                  
-            <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow">
-               {accounts.length && (
-                 <div>
-                   <button onClick={handleMint}>Mint</button>
-                 </div>
-                )}
-            </a>
+                
           
           </div>
         </div>

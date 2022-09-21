@@ -2,8 +2,64 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import { ethers, BigNumber } from "ethers";
+import { useEffect, useState } from "react";
+import {metaManorABI} from '../components/MetaManorABI.js';
+
+
+const metaManorAddress = "0xc7E145Ef006B1E14CC8bC6aC96C8320Ce2466c37";
+
 
 export default function Home() {
+  //Connecting Wallet
+  const [accounts, setAccounts] = useState([]);
+
+  async function connectAccounts() {
+    if (window.ethereum) {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts"
+      });
+      setAccounts(accounts);
+    }
+  }
+
+  useEffect(() => {
+    connectAccounts();
+  }, []);
+
+
+  //Minting functionality
+  const [mintAmount, setMintAmount] =  useState(1);
+
+  async function handleMint() {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        metaManorAddress,
+        metaManorABI,
+        signer
+      );
+
+      try {
+        const response = await contract.mint(BigNumber.from(mintAmount));
+          <div
+            class="p-4 text-green-700 border rounded border-green-900/10 bg-green-50"
+            role="alert"
+          >
+            <strong class="text-sm font-medium"> Mint Success! </strong>
+          </div>
+      } catch {
+          <div
+            class="p-4 text-red-700 border rounded border-red-900/10 bg-red-50"
+            role="alert"
+          >
+            <strong class="text-sm font-medium"> Mint Failed :C </strong>
+          </div>
+      }
+    }
+  }  
+  
   return (
     <section class="text-white ">
 
@@ -12,7 +68,7 @@ export default function Home() {
     </Head>
 
       {/* Main Body Element */}
-      <div class="px-4 pt-20 pb-60 mx-auto max-w-screen-xl lg:h-screen lg:items-center lg:flex">
+      <div class="px-4 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
         <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
           <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
             Zile Cao {"\n"} 
@@ -36,22 +92,13 @@ export default function Home() {
             Built with the Next.js and Tailwind CSS framework. {"\n"}
             
           </p>
-
-          <p class="text-blue-500 font-medium max-w-2xl mx-auto mt-4 sm:leading-relaxed sm:text-md">
-            Connect your crypto wallet and claim a free MetaManor NFT! {"\n"}
-          </p>
-
-          <p class= "font-medium text-sm mt-2 text-yellow-500">
-            {"\n"} * Must have MetaMask installed. Mint button will not appear until wallet is connected. Make sure you are on the Ethereum Mainnet. Requires a small amount for gas fees. *
-          </p>
-          
     
           <div class="flex flex-wrap justify-center mt-8 gap-4">
-          <Link href="/projects">
-            <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
-              My Projects
-            </a>
-          </Link>
+            <Link href="/projects">
+              <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
+                My Projects
+              </a>
+            </Link>
     
             <a
               class="block w-full px-12 py-3 text-sm font-medium text-white border border-blue-700 rounded sm:w-auto hover:bg-blue-600 active:bg-blue-500 focus:outline-none focus:ring"
@@ -61,8 +108,45 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </div>
 
+
+        <div class="mt-16 max-w-lg p-6 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-purple-500/10 border-purple-500/10">
+            <p class="text-purple-500 font-medium max-w-2xl mx-auto sm:leading-relaxed sm:text-xl">
+              Connect your crypto wallet and claim a free MetaManor NFT! {"\n"}
+            </p>
+
+            <p class= "font-medium text-sm mt-2 text-yellow-500">
+              {"\n"} * Must have MetaMask installed. Mint button will appear once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
+            </p>
+            
+            <div class = "p-6">
+                <Image
+                    src={"/../public/MetaManor.png"} 
+                    alt="MetaManor image"
+                    height="150"
+                    width="150"
+                />
+            </div>
+      
+            <div class="flex flex-wrap justify-center gap-4"> 
+              <a class="cursor-not-allowed block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
+                {accounts.length && (
+                  <div>
+                    <button onClick={handleMint}>Mint</button>
+                  </div>
+                  )}
+              </a>
+
+              <a
+                class="block w-full px-12 py-3 text-sm font-medium text-white border border-purple-700 rounded sm:w-auto hover:bg-purple-600 active:bg-purple-500 focus:outline-none focus:ring"
+                href="https://opensea.io/collection/metamanor-official"
+                >
+                  OpenSea
+              </a> 
+            </div>
+          </div>
+
+      </div>
     </section>  
 
     
