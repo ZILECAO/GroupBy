@@ -68,7 +68,7 @@ export default function Home() {
     </Head>
 
       {/* Main Body Element */}
-      <div class="px-4 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
+      <div class="px-6 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
         <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
           <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
             Zile Cao {"\n"} 
@@ -78,7 +78,7 @@ export default function Home() {
               Web3 Development Portfolio
           </h1>
     
-          <p class="font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
+          <p class="pb-2 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
             Hey there, thanks for checking out my site! {"\n"}
             
           </p>
@@ -89,7 +89,7 @@ export default function Home() {
           </p>
           
           <p class="text-blue-500 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
-            Built with the Next.js and Tailwind CSS framework. {"\n"}
+            Built with the Next.js, Ethers.js, and Tailwind CSS framework. {"\n"}
             
           </p>
     
@@ -111,12 +111,12 @@ export default function Home() {
 
 
         <div class="mt-16 max-w-lg p-6 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-purple-500/10 border-purple-500/10">
-            <p class="text-purple-500 font-medium max-w-2xl mx-auto sm:leading-relaxed sm:text-xl">
-              Connect your MetaMask wallet and claim a free MetaManor NFT! {"\n"}
+            <p class="text-purple-500 p-2 font-bold max-w-2xl mx-auto sm:leading-relaxed text-3xl">
+              Claim a free MetaManor NFT! {"\n"}
             </p>
 
-            <p class= "font-medium text-sm mt-2 text-yellow-500">
-              {"\n"} * Must have MetaMask installed. Mint button will appear once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
+            <p class= "font-medium text-xs text-yellow-500">
+              {"\n"} * Must have MetaMask installed. Mint button will appear broken as 0, but will function correctly once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
             </p>
             
             <div class = "p-6">
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
       
             <div class="flex flex-wrap justify-center gap-4"> 
-              <a class="cursor-not-allowed block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
+              <a class="cursor-not-allowed block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 hover:bg-purple-800 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
                 {accounts.length && (
                   <div>
                     <button onClick={handleMint}>Mint</button>
