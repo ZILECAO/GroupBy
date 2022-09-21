@@ -116,7 +116,7 @@ export default function Home() {
             </p>
 
             <p class= "font-medium text-xs text-yellow-500">
-              {"\n"} * Must have MetaMask installed. Mint button will appear broken as 0, but will function correctly once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
+              {"\n"} * Must have MetaMask installed. Mint button will appear only once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
             </p>
             
             <div class = "p-6">
@@ -129,16 +129,17 @@ export default function Home() {
             </div>
       
             <div class="flex flex-wrap justify-center gap-4"> 
-              <a class="cursor-not-allowed block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 hover:bg-purple-800 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
-                {accounts.length && (
-                  <div>
-                    <button onClick={handleMint}>Mint</button>
-                  </div>
+                {accounts.length > 0 && (
+                  <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 hover:bg-purple-800 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
+                    <div>
+                      <button onClick={handleMint}>Mint</button>
+                    </div>
+                  </a>
                   )}
-              </a>
+              
 
               <a
-                class="block w-full px-12 py-3 text-sm font-medium text-white border border-purple-700 rounded sm:w-auto hover:bg-purple-600 active:bg-purple-500 focus:outline-none focus:ring"
+                class="block w-full px-12 py-3 text-sm font-medium bg-purple-700 border border-purple-700 hover:bg-purple-800 rounded sm:w-auto focus:outline-none focus:ring"
                 href="https://opensea.io/collection/metamanor-official"
                 >
                   OpenSea
