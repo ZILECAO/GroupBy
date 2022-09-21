@@ -112,7 +112,7 @@ export default function Home() {
 
         <div class="mt-16 max-w-lg p-6 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-purple-500/10 border-purple-500/10">
             <p class="text-purple-500 font-medium max-w-2xl mx-auto sm:leading-relaxed sm:text-xl">
-              Connect your crypto wallet and claim a free MetaManor NFT! {"\n"}
+              Connect your MetaMask wallet and claim a free MetaManor NFT! {"\n"}
             </p>
 
             <p class= "font-medium text-sm mt-2 text-yellow-500">
@@ -121,10 +121,10 @@ export default function Home() {
             
             <div class = "p-6">
                 <Image
-                    src={"/../public/MetaManor.png"} 
+                    src={"https://metamanor.mypinata.cloud/ipfs/QmVBXTDv51rzy9rPbo6VT69xporuwGF3HJQK68jckYa7LP/MetaManor_0.jpg"} 
                     alt="MetaManor image"
                     height="150"
-                    width="150"
+                    width="220"
                 />
             </div>
       
