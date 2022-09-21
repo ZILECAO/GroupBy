@@ -68,33 +68,32 @@ export default function Home() {
     </Head>
 
       {/* Main Body Element */}
-      <div class="px-4 pt-20 pb-40 mx-auto mt-8 grid gap-8 grid-cols-1 md:grid-cols-1 lg:grid-cols-2 items-center">
-        
-        <div class="max-w-full p-12 m-20 mx-auto bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
-          <h1 class="max-w-xl mx-auto text-left text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
+      <div class="px-4 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
+        <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
+          <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
             Zile Cao {"\n"} 
           </h1>
 
-          <h1 class="max-w-xl mx-auto text-left pb-6 text-2xl font-extrabold text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
+          <h1 class="pb-6 text-2xl font-extrabold text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
               Web3 Development Portfolio
           </h1>
     
-          <p class="text-left pb-6 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
+          <p class="font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
             Hey there, thanks for checking out my site! {"\n"}
             
           </p>
 
-          <p class="text-left pb-6 font-medium max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
+          <p class="pb-6 font-medium max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
             I am a junior at the University of Pennsylvania currently studying economics and computer science. I am interested in internship opportunities in Web3 development or product management. {"\n"}
             
           </p>
           
-          <p class="text-left text-blue-500 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
+          <p class="text-blue-500 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
             Built with the Next.js and Tailwind CSS framework. {"\n"}
             
           </p>
     
-          <div class="flex flex-wrap justify-start mt-8 gap-4">
+          <div class="flex flex-wrap justify-center mt-8 gap-4">
             <Link href="/projects">
               <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
                 My Projects
@@ -111,12 +110,12 @@ export default function Home() {
         </div>
 
 
-        <div class="max-w-lg m-20 p-5 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-purple-500/10 border-purple-500/10">
-            <p class="text-3xl text-purple-600 font-bold max-w-2xl mx-auto sm:leading-relaxed">
-              Claim a free MetaManor NFT! {"\n"}
+        <div class="mt-16 max-w-lg p-6 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-purple-500/10 border-purple-500/10">
+            <p class="text-purple-500 font-medium max-w-2xl mx-auto sm:leading-relaxed sm:text-xl">
+              Connect your MetaMask wallet and claim a free MetaManor NFT! {"\n"}
             </p>
 
-            <p class= "font-medium text-xs mt-2 text-yellow-500">
+            <p class= "font-medium text-sm mt-2 text-yellow-500">
               {"\n"} * Must have MetaMask installed. Mint button will appear once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
             </p>
             
@@ -130,12 +129,10 @@ export default function Home() {
             </div>
       
             <div class="flex flex-wrap justify-center gap-4"> 
-              <a class="cursor-not-allowed block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border hover:bg-purple-800 border-purple-700 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
+              <a class="cursor-not-allowed block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
                 {accounts.length && (
                   <div>
-                    <button onClick={handleMint}>
-                      Mint
-                    </button>
+                    <button onClick={handleMint}>Mint</button>
                   </div>
                   )}
               </a>
