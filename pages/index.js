@@ -8,8 +8,21 @@ import {contractABI} from '../components/contractABI.js';
 
 const contractAddress = '0x250F2B55bAD518506114A64f6C73A92934eeE4C0';
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
+let provider;
 
+if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined')
+{
+    // we are in the browser and metamask is running
+    window.ethereum.request({ method: "eth_requestAccounts" });
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+}
+else
+{
+    // we are on the server *OR* the user is not running metamask
+    // https://medium.com/jelly-market/how-to-get-infura-api-key-e7d552dd396f
+    provider = new ethers.providers.JsonRpcProvider("https://eth-goerli.g.alchemy.com/v2/<insert alchemy key or use infura http link>");
+    // provider = new ethers.providers.Web3Provider(provider);
+}
 // get the end user
 const signer = provider.getSigner();
 
