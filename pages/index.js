@@ -4,10 +4,21 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
-import {metaManorABI} from '../components/MetaManorABI.js';
+import {contractABI} from '../components/contractABI.js';
 
+const contractAddress = '0x250F2B55bAD518506114A64f6C73A92934eeE4C0';
 
-const metaManorAddress = "0xc7E145Ef006B1E14CC8bC6aC96C8320Ce2466c37";
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+// get the end user
+const signer = provider.getSigner();
+
+// get the smart contract
+const contract = new ethers.Contract(
+  contractAddress,
+  contractABI,
+  signer
+);
 
 
 export default function Home() {
@@ -32,16 +43,7 @@ export default function Home() {
   const [mintAmount, setMintAmount] =  useState(1);
 
   async function handleMint() {
-    if (window.ethereum) {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(
-        metaManorAddress,
-        metaManorABI,
-        signer
-      );
-
-      try {
+    try {
         const response = await contract.mint(BigNumber.from(mintAmount));
           <div
             class="p-4 text-green-700 border rounded border-green-900/10 bg-green-50"
@@ -57,98 +59,133 @@ export default function Home() {
             <strong class="text-sm font-medium"> Mint Failed :C </strong>
           </div>
       }
-    }
+    
   }  
+
+  // wallet balance
+  const [balance, setBalance] = useState();
+
+  const getBalance = async () => {
+      const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const balance = await provider.getBalance(account);
+      setBalance(ethers.utils.formatEther(balance));
+  };
+
+
+  // get total minted
+  const [totalMinted, setTotalMinted] = useState(1);
+        useEffect(() => {
+            getCount();
+        }, []);
+
+  const getCount = async () => {
+     const count = await contract.count();
+      console.log(parseInt(count));
+      setTotalMinted(parseInt(count));
+  };
   
+
+  // Get NFT images
+  function NFTImage({ tokenId, getCount }) {
+      const metadataURI = `https://metamanor.mypinata.cloud/ipfs/QmZNpVp76W927dTJ3pSG2fNotzfgDxzMAq6XVF9d8FTjb9/${tokenId}`;
+      const imageURI = `https://metamanor.mypinata.cloud/ipfs/QmVBXTDv51rzy9rPbo6VT69xporuwGF3HJQK68jckYa7LP/MetaManor_${tokenId}.jpg`;
+
+
+      const [isMinted, setIsMinted] = useState(false);
+      useEffect(() => {
+          getMintedStatus();
+      }, [isMinted]);
+
+      const getMintedStatus = async () => {
+          const result = await contract.isContentOwned(metadataURI);
+          console.log(result)
+          setIsMinted(result);
+      };
+
+      const mintToken = async () => {
+          const connection = contract.connect(signer);
+          const addr = connection.address;
+          const result = await contract.payToMint(addr, metadataURI, {
+              value: ethers.utils.parseEther('0.001'),
+          });
+
+          await result.wait();
+          getMintedStatus();
+          getCount();
+      };
+
+      async function getURI() {
+          const uri = await contract.tokenURI(tokenId);
+          alert(uri);
+      }
+      return (
+          <div className="card" style={{ width: '18rem' }}>
+              <img className="card-img-top" src={isMinted ? imageURI : 'img/placeholder.png'}></img>
+              <div className="card-body">
+                  <h5 class ="mt-2 mb-2">ID #{tokenId}</h5>
+                  {!isMinted ? (
+                      <button class ="mr-4 p-2 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow" onClick={mintToken}>
+                          Mint
+                      </button>
+                  ) : (
+                      <button class ="mr-4 p-2 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow" onClick={getURI}>
+                          Already Minted! Show Metadata URI
+                      </button>
+                  )}
+              </div>
+          </div>
+      );
+    
+  }
+
+  // ACTUAL render page
   return (
     <section class="text-white ">
-
-    <Head>
-     <link rel="shortcut icon" href="../favicon.ico" />
-    </Head>
-
+      
       {/* Main Body Element */}
-      <div class="px-6 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
-        <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
-          <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
-            Zile Cao {"\n"} 
-          </h1>
-
-          <h1 class="pb-6 text-2xl font-extrabold text-transparent sm:text-4xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
-              Web3 Development Portfolio
-          </h1>
-    
-          <p class="pb-2 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
-            Hey there, thanks for checking out my site! {"\n"}
-            
-          </p>
-
-          <p class="pb-6 font-medium max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
-            I am a junior at the University of Pennsylvania currently studying economics and computer science. I am interested in internship opportunities in Web3 development or product management. {"\n"}
-            
-          </p>
-          
-          <p class="text-blue-500 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
-            Built with the Next.js, Ethers.js, and Tailwind CSS framework. {"\n"}
-            
-          </p>
-    
-          <div class="flex flex-wrap justify-center mt-8 gap-4">
-            <Link href="/projects">
-              <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
-                My Projects
-              </a>
-            </Link>
-    
-            <a
-              class="block w-full px-12 py-3 text-sm font-medium text-white border border-blue-700 rounded sm:w-auto hover:bg-blue-600 active:bg-blue-500 focus:outline-none focus:ring"
-              href="https://github.com/ZILECAO/zile-portfolio"
-              >
-                View Webpage Code
-            </a>
-          </div>
+      <div class="pb-40 mx-auto max-w-screen-xl lg:items-start">
+        <div class="max-w-lg mx-auto text-center">
+          <h2 class="pb-10 text-3xl font-extrabold sm:text-5xl text-white">
+          Web3 Student Notes Marketplace {"\n"} 
+          </h2>
         </div>
 
+        <div>
+          <a class="mr-4 p-2 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">
+            <button onClick={() => getBalance()}>Show My Balance</button>
+          </a>
+          <a class="text-m text-white font-bold">
+              {balance}
+          </a>
+          
+           
+          <p class="mt-6 text-2xl text-white font-bold">
+              Available MetaManors
+          </p>
+        </div>
 
-        <div class="mt-16 max-w-lg p-6 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-purple-500/10 border-purple-500/10">
-            <p class="text-purple-500 p-2 font-bold max-w-2xl mx-auto sm:leading-relaxed text-3xl">
-              Claim a free MetaManor NFT! {"\n"}
-            </p>
+        
 
-            <p class= "font-medium text-xs text-yellow-500">
-              {"\n"} * Must have MetaMask installed. Mint button will appear only once wallet is connected. Make sure you are on the Ethereum Mainnet, otherwise it will send ETH to the wrong contract on a different network. Requires a small amount of ETH for gas fees. *
-            </p>
-            
-            <div class = "p-6">
-                <Image
-                    src={"https://metamanor.mypinata.cloud/ipfs/QmVBXTDv51rzy9rPbo6VT69xporuwGF3HJQK68jckYa7LP/MetaManor_0.jpg"} 
-                    alt="MetaManor image"
-                    height="150"
-                    width="220"
-                />
+        <div class = "mt-10">
+            <div className="container">
+                <div class ="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {Array(totalMinted + 1)
+                        .fill(1)
+                        .map((_, i) => (
+                            <div key={i} class ="block p-8 border backdrop-brightness-75 border-gray-500 shadow-xl transition rounded-xl hover:shadow-white hover:border-white">
+                                <NFTImage tokenId={i} getCount={NFTImage.getCount} />
+                            </div>
+                            
+                        ))}
+                </div>
             </div>
-      
-            <div class="flex flex-wrap justify-center gap-4"> 
-                {accounts.length > 0 && (
-                  <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-purple-700 border border-purple-700 hover:bg-purple-800 rounded sm:w-auto active:text-opacity-75 focus:outline-none focus:ring">
-                    <div>
-                      <button onClick={handleMint}>Mint</button>
-                    </div>
-                  </a>
-                  )}
-              
+        </div>
 
-              <a
-                class="block w-full px-12 py-3 text-sm font-medium bg-purple-700 border border-purple-700 hover:bg-purple-800 rounded sm:w-auto focus:outline-none focus:ring"
-                href="https://opensea.io/collection/metamanor-official"
-                >
-                  OpenSea
-              </a> 
-            </div>
-          </div>
-
+        
       </div>
-    </section>  
+
+    </section>
 
     
   )
