@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import {contractABI} from '../components/contractABI.js';
+import {donoContractABI} from '../components/donoContractABI.js';
 
 const contractAddress = '0x250F2B55bAD518506114A64f6C73A92934eeE4C0';
+const donoContractAddress = '0x255777fB712C3101559277040D2F4D7050181846';
 
 let provider;
 
@@ -30,6 +32,13 @@ const signer = provider.getSigner();
 const contract = new ethers.Contract(
   contractAddress,
   contractABI,
+  signer
+);
+
+// get the dono smart contract
+const donoContract = new ethers.Contract(
+  donoContractAddress,
+  donoContractABI,
   signer
 );
 
@@ -74,6 +83,7 @@ export default function Home() {
       }
     
   }  
+
 
   // wallet balance
   const [balance, setBalance] = useState();

@@ -1,12 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
-import {contractABI} from './contractABI.js';
+import { Web3Provider } from '@ethersproject/providers';
 
-const contractAddress = "";
+
+
 
 export function Nav() {
 
@@ -27,8 +24,6 @@ export function Nav() {
     }, []);
 
 
-    
-  
 
   // Top Navigation Element
     return (
