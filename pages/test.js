@@ -44,27 +44,15 @@ async function getTotalListed() {
 }
 
 
-function showForm() {
-    return (
-        <div class = "pt-6 pb-6">
-            <label for="UserEmail" class="block text-xs font-medium text-gray-700">
-            Email
-            </label>
-        
-            <input
-            type="email"
-            id="UserEmail"
-            placeholder="john@rhcp.com"
-            class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
-            />
-        </div>
-      );
-  }
+
 
 export default function Home() {
   //Connecting Wallet
   const [accounts, setAccounts] = useState([]);
   const [buttonState, setButtonState] = useState(false);
+  const [noteURI, setNoteURI] = useState("");
+  const [user, setUser] = useState("");
+  const [description, setDescription] = useState("");
 
   async function connectAccounts() {
     if (window.ethereum) {
@@ -89,6 +77,23 @@ export default function Home() {
       setBalance(ethers.utils.formatEther(balance));
   };
 
+//handle submit form 
+
+  const handleSubmitForm = async (event) => {
+    event.preventDefault();
+    //***modify below to call ur smart contract */
+    console.log(event.target[0].value)
+    console.log(event.target[1].value)
+    console.log(event.target[2].value)
+    ////////
+    setUser("");
+    setDescription("");
+    setNoteURI("");
+    setButtonState(false);
+    
+  }
+  
+  
   
 
 
@@ -118,9 +123,30 @@ export default function Home() {
 
 
           <a class="mr-4 p-2 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">
-            <button  onClick={() => setButtonState(true) }>Create New Listing</button>
+            <button  onClick={() => setButtonState(!buttonState) }>Create New Listing</button>
           </a>
-          {buttonState ? showForm() : null}
+          {buttonState ? 
+          <div class = "pt-6 pb-6">
+          
+          <form onSubmit={handleSubmitForm}>
+           
+             <label  class = "pt-6 pb-6 text-black">
+             Name:
+              <input type="text"class="text-black" placeholder="john@rhcp.com" value={user} onChange={event =>setUser(event.target.value)} />
+            </label>
+            <label  class = "pt-6 pb-6 text-black">
+             Desscription:
+              <input type="text"class="text-black" placeholder="" value={description} onChange={event =>setDescription(event.target.value)} />
+            </label>
+            <label  class = "pt-6 pb-6 text-black">
+             URI:
+              <input type="text"class="text-black" placeholder="" value={noteURI} onChange={event =>setNoteURI(event.target.value)} />
+            </label>
+            
+            <button type="submit" class="mr-4 p-2 text-sm font-medium text-white bg-zinc-600 hover:bg-zinc-700 rounded-md shadow">Submit</button>
+
+         </form> 
+       </div> : null}
           
            
           <p class="mt-6 text-2xl text-white font-bold">
