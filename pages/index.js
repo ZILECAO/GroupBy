@@ -6,7 +6,7 @@ import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { donoContractABI } from '../components/donoContractABI.js';
 
-const donoContractAddress = '0x39A60e61181b605B81828Ab941Cc1A5145bEbaFF';
+const donoContractAddress = '0xc8f599d7f0C00Bd5e1BF3896DD50d31c64663933';
 
 let provider;
 
