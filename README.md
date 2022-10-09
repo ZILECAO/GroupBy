@@ -2,6 +2,8 @@
 
 https://w3b-hackathon.vercel.app/
 
+-- must use eth goerli testnet on metamask
+
 ---
 ## Interact with the smart contract here
 
