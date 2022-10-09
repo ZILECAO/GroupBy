@@ -8,7 +8,7 @@ import {contractABI} from '../components/contractABI.js';
 import {donoContractABI} from '../components/donoContractABI.js';
 
 const contractAddress = '0x250F2B55bAD518506114A64f6C73A92934eeE4C0';
-const donoContractAddress = '0x255777fB712C3101559277040D2F4D7050181846';
+const donoContractAddress = '0x39A60e61181b605B81828Ab941Cc1A5145bEbaFF';
 
 let provider;
 
@@ -201,6 +201,7 @@ export default function Home() {
                             </div>
                             
                         ))}
+                        
                 </div>
             </div>
         </div>
