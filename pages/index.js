@@ -87,12 +87,12 @@ export default function Home() {
 
         {/* Main Body Element */}
         <div class="px-6 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
-            <div class="max-w-2xl p-10 mx-auto text-center ">
-            <h1 class="p-2 text-5xl font-small text-transparent text-black w-max">
+            <div class=" p-10 mx-auto text-center ">
+            <h1 class="p-2 text-5xl font-small text-transparent text-black">
                 Group purchase made simple
             </h1>
 
-            <h1 class="text-5xl font-small text-transparent text-black">
+            <h1 class="pb-2 text-5xl font-small text-transparent text-black">
                 for on-chain businesses
             </h1>
 
