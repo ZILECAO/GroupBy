@@ -29,9 +29,9 @@ export function Nav() {
   // Top Navigation Element
     return (
       <header class="py-1 bg-white">
-      <div class="px-6 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+      <div class="px-6 mx-auto max-w-screen-xl sm:px-6 lg:px-8 items-center">
         
-        <div class="flex items-center justify-center h-16">
+        <div class="flex items-center justify-between h-16">
           <div class="flex-1 md:flex md:items-center md:gap-12">
 
             <Link href="/">
@@ -42,7 +42,7 @@ export function Nav() {
 
           </div>
 
-          <div class="flex gap-6 text-sm p-32">
+          <div class="flex text-sm items-center gap-6 justify-end pl-4">
                 <Link href="/">
                   <a class="text-gray-500 transition hover:text-gray-500/75">
                     Home
@@ -60,18 +60,16 @@ export function Nav() {
                     Features
                   </a>
                 </Link>
-          </div>
+          
         
-        <div class="flex items-center gap-4">
-          <div class="sm:flex sm:gap-4">
-            
-              
+
               <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md shadow">
                 <button onClick={connectAccounts}>Sign in with Metamask</button>
               </a>
+
+              </div>
                 
-            </div>
-          </div>
+
         </div>
       </div>
     </header>
