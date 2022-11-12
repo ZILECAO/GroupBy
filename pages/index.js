@@ -24,14 +24,12 @@ else {
 // get the end user
 const signer = provider.getSigner();
 
-// get the dono smart contract
+// get the smart contract
 const donoContract = new ethers.Contract(
     contractAddress,
     contractABI,
     signer
 );
-
-
 
 
 export default function Home() {

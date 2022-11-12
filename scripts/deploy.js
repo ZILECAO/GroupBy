@@ -19,7 +19,7 @@ async function main() {
 
   await easyA.deployed();
 
-  console.log("BridXeEscrow deployed to:", easyA.address);
+  console.log("easyA contract deployed to:", easyA.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
