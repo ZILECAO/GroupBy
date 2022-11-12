@@ -79,54 +79,19 @@ export default function Home() {
 
     // ACTUAL render page
     return (
-        <section class="text-white bg-slate-500">
-
-        <Head>
-        <link rel="shortcut icon" href="../favicon.ico" />
-        </Head>
-
-        {/* Main Body Element */}
-        <div class="px-6 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
-            <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
-            <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl  text-indigo-800">
-                Product Name {"\n"} 
-            </h1>
-
-            <h1 class="pb-6 text-2xl font-extrabold text-transparent sm:text-4xl text-indigo-800">
-                Find your family plan group!
-            </h1>
-
-            <p class="pb-6 font-medium max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
-                insert description TODO {"\n"}
-                
-            </p>
-            
-            <p class="text-blue-500 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
-                Built with the Next.js, Ethers.js, and Tailwind CSS framework. {"\n"}
-                
-            </p>
-        
-            <div class="flex flex-wrap justify-center mt-8 gap-4">
-                <Link href="/listings">
-                <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
-                    Check out listings
-                </a>
-                </Link>
-        
-                <a
-                class="block w-full px-12 py-3 text-sm font-medium text-white border border-blue-700 rounded sm:w-auto hover:bg-blue-600 active:bg-blue-500 focus:outline-none focus:ring"
-                href="https://github.com/ZILECAO/easyA-hackathon"
-                >
-                    View Webpage Code
-                </a>
-            </div>
-            </div>
-
-
-            
-
+        <section class="text-white ">
+      
+      {/* Main Body Element */}
+      <div class="px-4 pt-12 pb-32 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+        <div class="max-w-lg mx-auto text-center">
+          <h2 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
+          Listings {"\n"} 
+          </h2>
         </div>
-        </section>  
+        
+      </div>
+
+    </section>
 
 
     )
