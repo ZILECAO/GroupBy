@@ -1,18 +1,20 @@
-## View the live webpage 
+## How to install on your computer 
 
-https://w3b-hackathon.vercel.app/
+1. Clone github repo
+2. In a terminal, run 
 
--- must use eth goerli testnet on metamask
+```
+yarn install 
+```
 
----
-## Interact with the smart contract here
+3. create a new file in the root directory named ".env" and paste the following: 
 
-https://donofinal.zilecao.repl.co/
+```
+PRIVATE_KEY=
+```
 
+4. Run dev mode
 
--- note this replit may sleep sometimes so just contact me and I will relaunch it
-
----
-## Video demo
-
-on the way
+```
+yarn dev
+```
