@@ -4,7 +4,6 @@
 2. In a terminal, run 
 
 ```
-cd escrow-contract2
 yarn install 
 ```
 
