@@ -4,9 +4,9 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
-import { donoContractABI } from '../components/donoContractABI.js';
+import { contractABI } from '../components/contractABI.js';
 
-const donoContractAddress = '0xc8f599d7f0C00Bd5e1BF3896DD50d31c64663933';
+const contractAddress = '';
 
 let provider;
 
@@ -26,8 +26,8 @@ const signer = provider.getSigner();
 
 // get the dono smart contract
 const donoContract = new ethers.Contract(
-    donoContractAddress,
-    donoContractABI,
+    contractAddress,
+    contractABI,
     signer
 );
 
@@ -35,35 +35,6 @@ const donoContract = new ethers.Contract(
 
 
 export default function Home() {
-
-    // get total listed
-    const [totalListed, setTotalListed] = useState(1);
-    useEffect(() => {
-        getCount();
-    //     const getCount2 = async (itemId) => {
-    //         const count2 = await donoContract.getNoteURI(itemId);
-    //         // setNoteURILink(count2);
-    //         return count2
-    //     };
-    // }, []);
-    // const getCount3 = async (itemId) => {
-    //     const count3 = getCount2(itemId)
-    //     // setNoteURILink(count2);
-    //     return count3
-    });
-    const getCount = async () => {
-        const count = await donoContract.getTotalListed.call();
-        setTotalListed(parseInt(count));
-    };
-
-
-    // get note uri 
-    // const [noteURILink, setNoteURILink] = useState("");
-    // useEffect(() => {
-    //     getCount2();
-    // }, []);
-
-
 
     //Connecting Wallet
     const [accounts, setAccounts] = useState([]);
@@ -81,24 +52,6 @@ export default function Home() {
             setAccounts(accounts);
         }
     }
-    const refresh =  async()=>{
-      //get URI and put in setURIList
-      let list = []
-      for (let i = 0; i < totalListed; i++) {
-        const count2 = await donoContract.getNoteURI(i);
-        list.push(count2)
-        console.log(i,count2) 
-      }
-      setURIList(list);
-
-    }
-    useEffect(() => {
-        connectAccounts();
-        
-        refresh();
-
-    }, []);
-
     // wallet balance
     const [balance, setBalance] = useState();
 
@@ -135,7 +88,7 @@ export default function Home() {
 
                 <div class="max-w-lg mx-auto text-center">
                     <h2 class="pb-10 text-3xl font-extrabold sm:text-5xl text-white">
-                        Web3 Student Notes Marketplace {"\n"}
+                        Find Your Family Plan Group! {"\n"}
                     </h2>
                 </div>
 
@@ -176,40 +129,9 @@ export default function Home() {
 
 
                     <p class="mt-6 text-2xl text-white font-bold">
-                        Available Notes
+                        Available Listings
                     </p>
                 </div>
-
-
-
-                <div class="mt-10">
-                    <div className="container">
-                        <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                            {Array(totalListed)
-                                .fill(1)
-                                .map((_, i) => (
-                                    <div key={i}>
-                                        <a
-                                            class="block p-8 border backdrop-brightness-75 border-gray-500 shadow-xl transition rounded-xl hover:shadow-white hover:border-white"
-                                            onClick={refresh}
-                                            href={URIList[i]}
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-600">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-                                            </svg>
-
-
-                                            <h3 class="mt-4 text-xl font-bold text-white">Note {i}</h3>
-                                        </a>
-                                    </div>
-
-                                ))}
-
-
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
 
