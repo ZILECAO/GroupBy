@@ -79,48 +79,52 @@ export default function Home() {
 
     // ACTUAL render page
     return (
-        <section class="text-white bg-slate-500">
+        <section class="text-black bg-white pb-32">
 
         <Head>
-        <link rel="shortcut icon" href="../favicon.ico" />
+            <link rel="shortcut icon" href="../favicon.ico" />
         </Head>
 
         {/* Main Body Element */}
         <div class="px-6 pt-20 pb-40 mx-auto max-w-screen-xl lg:items-start">
-            <div class="max-w-2xl p-10 mx-auto text-center bg-blend-normal backdrop-brightness-75 rounded-3xl border border-gray-700 shadow-xl shadow-blue-500/10 border-blue-500/10">
-            <h1 class="text-3xl font-extrabold text-transparent sm:text-5xl  text-indigo-800">
-                Product Name {"\n"} 
+            <div class="max-w-2xl p-10 mx-auto text-center ">
+            <h1 class="p-2 text-5xl font-small text-transparent text-black w-max">
+                Group purchase made simple
             </h1>
 
-            <h1 class="pb-6 text-2xl font-extrabold text-transparent sm:text-4xl text-indigo-800">
-                Find your family plan group!
+            <h1 class="text-5xl font-small text-transparent text-black">
+                for on-chain businesses
             </h1>
 
-            <p class="pb-6 font-medium max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
-                insert description TODO {"\n"}
-                
+            <p class="pt-6 max-w-xl mx-auto mt-1 sm:leading-relaxed sm:text-md">
+                Turn every on-chain payment into a group purchase with rebates! {"\n"}
             </p>
-            
-            <p class="text-blue-500 font-medium max-w-xl mx-auto sm:leading-relaxed sm:text-md">
-                Built with the Next.js, Ethers.js, and Tailwind CSS framework. {"\n"}
-                
+
+            <p class="max-w-xl mx-auto sm:leading-relaxed sm:text-md">
+                No instrumentation needed. {"\n"}
             </p>
         
             <div class="flex flex-wrap justify-center mt-8 gap-4">
                 <Link href="/listings">
-                <a class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-700 border border-blue-700 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring animate-pulse">
-                    Check out listings
+                <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-black border hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring animate-pulse">
+                    Learn More
                 </a>
                 </Link>
         
                 <a
-                class="block w-full px-12 py-3 text-sm font-medium text-white border border-blue-700 rounded sm:w-auto hover:bg-blue-600 active:bg-blue-500 focus:outline-none focus:ring"
+                class="block w-full px-8 py-3 text-xs font-xs text-black bg-gray-300 border rounded-full sm:w-auto hover:bg-gray-400 active:bg-blue-500 focus:outline-none focus:ring"
                 href="https://github.com/ZILECAO/easyA-hackathon"
                 >
-                    View Webpage Code
+                    View Code
                 </a>
             </div>
-            </div>
+
+            <p class="pt-8 max-w-xl text-xs font-bold mx-auto sm:leading-relaxed sm:text-md">
+                Supports your favorite on-chain vendors {"\n"}
+            </p>
+
+
+        </div>
 
 
             
