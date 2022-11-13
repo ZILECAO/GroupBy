@@ -1,10 +1,3 @@
-## Live Website:
-
-*Must have TronLink wallet installed on Chrome!*
-
-https://easy-a-hackathon.vercel.app/
-
-
 ## Slide deck presentation: 
 
 https://gateway.pinata.cloud/ipfs/QmThytReLYmTqRjaPfXaQpvp3RqyDvuEkMfYs8F9rthaDU
@@ -13,6 +6,13 @@ https://gateway.pinata.cloud/ipfs/QmThytReLYmTqRjaPfXaQpvp3RqyDvuEkMfYs8F9rthaDU
 ## Demo:
 
 https://www.loom.com/share/fa01a8870d8240be9e1aff6e48277425
+
+
+## Live Website:
+
+*Must have TronLink wallet installed on Chrome!*
+
+https://easy-a-hackathon.vercel.app/
 
 
 ## How to install on your computer 
