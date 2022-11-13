@@ -1,5 +1,19 @@
 import React from 'react'
 import { useState } from 'react';
+const NodeRSA = require('node-rsa');
+const key = new NodeRSA();
+const keyData =
+"-----BEGIN RSA PUBLIC KEY-----\n" +
+"MIGJAoGBAIIy3n7DEPUob/X4I0Gm8XvYl1jwUcoSjlKIZF1Ggzx+X9KM4JPL4Flz\n" +
+"KtqmUJbR5vSqqxwNikbe83DdC4oSG+Tzh+BWQRNiMO65BVC4dmw0qMjvazODi3Vf\n" +
+"kohzIUerAdNUiq3Ss+9QjWYeWTrmULSGoisM/+4dNdUifNm+8gSbAgMBAAE=\n"
+    "-----END RSA PUBLIC KEY-----";
+key.setOptions({
+  encryptionScheme: "pkcs1"
+});
+
+key.importKey(keyData, "pkcs8-public");
+
 
 export function Dashboard({instance}) {
 
@@ -25,6 +39,14 @@ export function Dashboard({instance}) {
     console.log(`member 2 is ${memberEmail2}`)
     console.log(`member 3 is ${memberEmail3}`)
     console.log(`member 4 is ${memberEmail4}`)
+    let c_memberEmail1 = key.encrypt(memberEmail1, 'base64');
+    let c_memberEmail2 = key.encrypt(memberEmail2, 'base64');
+    let c_memberEmail3 = key.encrypt(memberEmail3, 'base64');
+    let c_memberEmail4 = key.encrypt(memberEmail4, 'base64');
+    console.log(`c_member 1 is ${c_memberEmail1}`)
+    console.log(`c_member 2 is ${c_memberEmail2}`)
+    console.log(`c_member 3 is ${c_memberEmail3}`)
+    console.log(`c_member 4 is ${c_memberEmail4}`)
     let price = (product === "NFT Pass | 25 USD ↓" ? (25):100)
     //insert smart function call here
     // let returnValue =instance.favoriteNumber().send()
