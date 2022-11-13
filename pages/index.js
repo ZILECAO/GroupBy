@@ -93,7 +93,7 @@ export default function Home() {
 
     // ACTUAL render page
     return (
-        <section class="text-white bg-slate-900">
+        <section class="text-white bg-slate-900 pb-24">
 
             {/* Nav bar and check that wallet account is connected */}
             <Nav connectAccounts={connectAccounts} accounts={accounts} setAccounts={setAccounts} authenticated={authenticated} />
