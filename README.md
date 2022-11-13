@@ -5,15 +5,12 @@
 
 ```
 yarn install 
+npm install
 ```
 
-3. create a new file in the root directory named ".env" and paste the following: 
+3. Run dev mode
 
-```
-PRIVATE_KEY=
-```
-
-4. Run dev mode
+*Must run localhost:3000 on chrome browser with tronlink wallet
 
 ```
 yarn dev
