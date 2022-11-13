@@ -55,14 +55,19 @@ export function Dashboard({ instance }) {
     let price = (product === "NFT Pass | 25 USD ↓" ? (25) : 100)
     //insert smart function call here
     // let returnValue =instance.favoriteNumber().send()
-    console.log('returnValue', returnValue)
+    // console.log('returnValue', returnValue)
     setProduct(0)
     setGroupName('')
     setMemberEmail1('')
     setMemberEmail2('')
     setMemberEmail3('')
     setMemberEmail4('')
+<<<<<<< HEAD
   }
+=======
+    
+}
+>>>>>>> 07f2e127e62f7b4367570ceaec748297b96125a7
 
   return (
     <section class="">

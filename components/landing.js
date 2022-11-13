@@ -5,25 +5,25 @@ export function Landing() {
     return (
         <div class="px-6 pt-20 pb-44 bg-cover h-screen’">
             <div class=" p-10 mx-auto text-center ">
-                <h1 class="p-2 text-6xl font-medium font-mono text-slate-400">
-                    Group purchase <a class="underline decoration-indigo-500 ">made simple</a>
+                <h1 class="p-2 text-5xl font-medium font-mono text-slate-400">
+                    Split payment <a class="underline decoration-indigo-500 text-white ">made simple</a>
                 </h1>
 
-                <h1 class="pb-2 text-6xl font-medium font-mono text-slate-400">
-                    for on-chain businesses
+                <h1 class="pb-2 text-5xl font-medium font-mono text-slate-400">
+                    for on-chain and off-chain
                 </h1>
 
                 <p class="text-white pt-6 max-w-2xl mx-auto font-mono mt-1 sm:leading-relaxed sm:text-md ">
-                    Turn every on-chain payment into a group purchase with rebates! {"\n"}
+                   Buying with friends has never been easier. {"\n"}
                 </p>
 
                 <p class="text-white max-w-xl mx-auto font-mono sm:leading-relaxed sm:text-md">
-                    No instrumentation needed. {"\n"}
+                    Create group, get notified via email, pay and the rest is <a class ="animate-pulse">magic</a> {"\n"}
                 </p>
 
                 <div class="flex font-mono flex-wrap justify-center mt-8 gap-4">
                     <Link href="/home">
-                        <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-gray-800 hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring animate-pulse">
+                        <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-black border hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring ">
                             Learn More
                         </a>
                     </Link>
@@ -37,7 +37,7 @@ export function Landing() {
                 </div>
 
                 <p class="text-white pt-8 max-w-xl font-mono text-xs font-bold mx-auto sm:leading-relaxed sm:text-md">
-                    Supports your favorite on-chain vendors {"\n"}
+                    Use case: Pay your spotify family plan  {"\n"}
                 </p>
 
 
