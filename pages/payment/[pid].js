@@ -23,7 +23,7 @@ const contractAddress = '';
 const server = "https://api.shasta.trongrid.io";
 const address = "TPbCp2b2PEwny7GVKBUtTnyhuUbLN4vNp6";
 const tronWeb = new TronWeb({fullHost:server, solidityNode:server, eventServer:server, privateKey: process.env.PRIVATE_KEY});
-let instance = await tronWeb.contract(testABI,address);
+
 tronWeb.setAddress(address);
 
 const PaymentPage = () => {
@@ -32,10 +32,28 @@ const PaymentPage = () => {
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
   
-  
-  const fromWhom =await instance.getOwner().call();
-  const forWhat =await instance.getProvider().call();
-  const howMuch =await instance.getXXX().call();
+//   let instance;
+//   const getContract = async () => {
+//     let instance = await tronWeb.contract(testABI,address);
+//   }
+
+//   const getOwner = async () => {
+//     const owner = await instance.owner().call();
+//   }
+//   const getProvider = async () => {
+//     const provider = await instance.getProvider().call();
+//     }
+//     //not yet implemented
+//   const getHowMuch = async () => {
+//     const howMuch = await instance.howMuch().call();
+//     }
+// //   getContract();
+//   const fromWhom = getOwner();
+//   const forWhat = getProvider();
+//   const howMuch =getHowMuch();
+  const fromWhom ='';
+  const forWhat = '';
+  const howMuch ='';
 
   const onSubmit=(e)=>{
     e.preventDefault()
