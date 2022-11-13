@@ -35,8 +35,8 @@ const PaymentPage = () => {
     const [favNum,setFavNum] = useState(0) 
     //hard coded for demo
     const [fromWhom,setOwner] = useState('THdUVA8Ey33A7P3Z4cfG5M2yEd6iEWZZym');
-    const [forWhat, setProvider] = useState('NFT Pass');
-    const [howMuch, setHowMuch] = useState('25');
+    const [forWhat, setProvider] = useState('GTA code');
+    const [howMuch, setHowMuch] = useState('10');
 
     let instance;
     
@@ -105,7 +105,7 @@ const PaymentPage = () => {
     const getNotPaidUsers = [1, 2];
     return (
         <div>
-            <p>GID: {pid} Index: {index}</p>
+            
             <div>
                 <p>You've got a new group request from {fromWhom}</p>
             </div>
@@ -132,7 +132,7 @@ const PaymentPage = () => {
             </div>
             <div><h2>Funding</h2></div>
             <p>--------</p>
-            <p>Funding completed {getPaidUsers.length}/ {getPaidUsers.length + getNotPaidUsers.length}</p>
+            <p>Funding completed {0}/ {getPaidUsers.length + getNotPaidUsers.length}</p>
             <button onClick={submitTrasaction} className='bg-green-500'> Pay {howMuch} USDT with TronLink</button>
         </div>
     )

@@ -24,12 +24,12 @@ export function Dashboard({ instance }) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [group1, setGroup1] = useState(false);
-  const [product, setProduct] = useState("NFT Pass | 25 USD");
+  const [product, setProduct] = useState("GTA5 | 40 USD");
   const [groupName, setGroupName] = useState("");
-  const [memberEmail1, setMemberEmail1] = useState([]);
-  const [memberEmail2, setMemberEmail2] = useState([]);
-  const [memberEmail3, setMemberEmail3] = useState([]);
-  const [memberEmail4, setMemberEmail4] = useState([]);
+  const [memberEmail1, setMemberEmail1] = useState('');
+  const [memberEmail2, setMemberEmail2] = useState('');
+  const [memberEmail3, setMemberEmail3] = useState('');
+  const [memberEmail4, setMemberEmail4] = useState('');
 
   const onSubmit = (e) => {
     setShowModal(false)
@@ -55,9 +55,9 @@ export function Dashboard({ instance }) {
     console.log(`c_member 2 is ${c_memberEmail2}`)
     console.log(`c_member 3 is ${c_memberEmail3}`)
     console.log(`c_member 4 is ${c_memberEmail4}`)
-    let price = (product === "NFT Pass | 25 USD ↓" ? (25) : 100)
+    let price = (product === "GTA5 | 40 USD ↓" ? (40) : 100)
     //insert smart function call here
-    // let returnValue =instance.favoriteNumber().send()
+    let returnValue =instance.onboard(product,[1,2],["hi"],10,'TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs').send()
     // console.log('returnValue', returnValue)
     setProduct(0)
     setGroupName('')
@@ -131,7 +131,7 @@ export function Dashboard({ instance }) {
                             onChange={(e) => setProduct(e.target.value)}
                           >
                             <option>
-                              NFT Pass | 25 USD
+                              GTA5 | 40 USD
                             </option>
                             <option>
                               Concert Tix | 100 USD
@@ -204,7 +204,7 @@ export function Dashboard({ instance }) {
                         </p>
 
                         <p className="my-2 pt-4 text-white text-lg leading-relaxed">
-                          {product === "NFT Pass | 25 USD" ? (25) : 100}
+                          {product === "GTA5 | 40 USD" ? (40) : 100}
 
                         </p>
 
@@ -242,7 +242,7 @@ export function Dashboard({ instance }) {
               type="button"
               onClick={() => setShowModal2(true)}
             >
-            <img src={'../spotify.png'} alt="gradient" class = "scale-75"/>
+            <img src={'../steam-logo-transparent.png'} alt="gradient" class = "scale-75"/>
               Apt 402
             </button>
 
@@ -276,27 +276,31 @@ export function Dashboard({ instance }) {
 
                       <div className="relative pr-32 pl-8 flex-auto ">
                         <p className="mb-4 text-gray-800 text-lg justify-start">
-                          Spotify
+                          GTA 5
 
                         </p>
 
 
                         <p className="mb-4 text-green-800 text-lg justify-start">
-                          Savings: $50
+                          Total: $40 -> $10 per person
+
+                        </p>
+                        <p className="mb-4 text-red-800 text-lg justify-start">
+                          Status: 1/4 paid
 
                         </p>
 
                         <p className="pt-4 text-gray-800 text-lg justify-start">
-                          Members: 5
+                          Members: 4
 
                         </p>
 
                         <p className="pt-1 text-gray-800 text-lg justify-start">
-                          zile@groupby.com,
+                          yihechen@seas.upenn.edu
                           julia@groupby.com,
                           austin@groupby.com,
                           brandon@groupby.com,
-                          intel@groupby.com
+                      
 
                         </p>
 
