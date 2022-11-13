@@ -20,7 +20,7 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 
             <Link href="/">
               <button>
-                <img src={'../Vector2.png'} alt="GroupPay logo" />
+                <img src={'../Vector3.png'} alt="GroupPay logo" />
               </button>
             </Link>
 
