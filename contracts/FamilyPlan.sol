@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.7;
 
-// things left to do: trc-10 (done), date (so funds cannot be locked in), reminding users, importing ownable (done I think)
+// things left to do
 
 import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
@@ -36,10 +36,13 @@ contract FamilyPlan is Ownable {
 
     string public familyPlanProvider;
     IERC20 usdt;
-    mapping(address => User) private userPayments;
+    mapping(address => User) public userPayments;
     // so we can iterate through the map
     address payable[] private users;
     FAMILY_PLAN_STATE public familyPlanStatus;
+
+    uint256 startTimestamp;
+    uint256 endTimestamp;
 
     // how to store date?
 
@@ -56,14 +59,17 @@ contract FamilyPlan is Ownable {
 
     // constructor
     // assuming family[i] corresponds to user[i]
+    // expiration in days
     constructor(
         string memory _familyPlanProvider,
         address payable[] memory family,
         uint256[] memory amountOwed,
-        string[] memory emails
+        string[] memory emails,
+        uint8 expiration
     ) Ownable() {
         // initializing variables based on inputs
         familyPlanProvider = _familyPlanProvider;
+        startTimestamp = block.timestamp;
         udst = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
         require(
             family.length == amountOwed.length &&
@@ -80,6 +86,7 @@ contract FamilyPlan is Ownable {
             );
             users.push(family[i]);
         }
+        endTimestamp = startTimestamp + (86400 * expiration);
         familyPlanStatus = FAMILY_PLAN_STATE.OPEN;
     }
 
@@ -90,6 +97,10 @@ contract FamilyPlan is Ownable {
 
     // ability for user to pay family plan
     function userPay(uint256 amount) public payable openFamilyPlan {
+        if (block.timestamp > endTimestamp) {
+            refund();
+            revert("Contract expired");
+        }
         require(amount > 0, "You must pay some tokens");
         require(
             usdt.allowance(msg.sender, address(this)) >= amount,
@@ -186,6 +197,29 @@ contract FamilyPlan is Ownable {
             paid = true;
         } else {
             paid = false;
+        }
+    }
+
+    function paidStatistics()
+        public
+        view
+        returns (address payable[] havePaid, address payable[] notPaid)
+    {
+        for (uint256 i = 0; i < users.length; i++) {
+            if (
+                userPayments[users[i]].amountPaid >=
+                userPayments[users[i]].amountOwed
+            ) {
+                havePaid.push(users[i]);
+            } else {
+                notPaid.push(users[i]);
+            }
+        }
+    }
+
+    function userData() public view returns (User[] people) {
+        for (uint256 i = 0; i < users.length; i++) {
+            people.push(userPayments(users[i]));
         }
     }
 }
