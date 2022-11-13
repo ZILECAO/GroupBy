@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { contractABI } from '../components/contractABI.js';
+import { Nav, Footer } from "../components/navfooter"
+
 
 const contractAddress = '';
 
@@ -81,9 +83,8 @@ export default function Home() {
     return (
         <section class="text-black bg-white">
 
-        <Head>
-            <link rel="shortcut icon" href="../favicon.ico" />
-        </Head>
+        {/* Nav bar and check that wallet account is connected */}
+        <Nav connectAccounts = {connectAccounts} accounts={accounts} setAccounts = {setAccounts}/>
 
         {/* Main Body Element */}
         
