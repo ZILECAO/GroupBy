@@ -35,7 +35,8 @@ contract FamilyPlan is Ownable {
     // need to store expiration date
 
     string public familyPlanProvider;
-    IERC20 usdt;
+    uint256 public groupID;
+    IERC20 public usdt;
     mapping(address => User) public userPayments;
     mapping(string => uint256) public userEmails;
     User[] public data;
@@ -66,13 +67,27 @@ contract FamilyPlan is Ownable {
         string memory _familyPlanProvider,
         uint256[] memory amountOwed,
         string[] memory emails,
-        uint8 expiration
+        uint8 expiration,
+        uint256 _groupID
     ) Ownable() {
         // initializing variables based on inputs
         familyPlanProvider = _familyPlanProvider;
         startTimestamp = block.timestamp;
         // 0xdAC17F958D2ee523a2206206994597C13D831ec7
         usdt = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
+        // hard code for demo
+        if (true) {
+            groupID = 8888;
+            _familyPlanProvider = "Tron Hacks";
+            amountOwed[0] = 25;
+            amountOwed[1] = 25;
+            amountOwed[3] = 25;
+            amountOwed[4] = 25;
+            emails[0] = "yihechen@seas.upenn.edu";
+            emails[1] = "brdk@seas.upenn.edu";
+            emails[2] = "jmdeng@wharton.upenn.edu";
+            emails[3] = "zilecao@sas.upenn.edu";
+        }
         require(
             amountOwed.length == emails.length,
             "Data is not a surjective function"
