@@ -3,7 +3,7 @@ import Link from 'next/link'
 export function Landing() {
 
     return (
-        <div class="px-6 pt-20 pb-40 bg-cover bg-slate-900 h-screen’">
+        <div class="px-6 pt-20 pb-44 bg-cover h-screen’">
             <div class=" p-10 mx-auto text-center ">
                 <h1 class="p-2 text-5xl font-medium font-mono text-slate-400">
                     Split payment <a class="underline decoration-indigo-500 text-white ">made simple</a>
@@ -31,7 +31,7 @@ export function Landing() {
                     </Link>
 
                     <a
-                        class="block font-mono w-full px-8 py-3 text-xs font-xs text-black bg-gray-300 border rounded-full sm:w-auto hover:bg-gray-400 active:bg-blue-500 focus:outline-none focus:ring"
+                        class="block font-mono w-full px-8 py-3 text-xs font-xs text-black bg-gray-300 rounded-full sm:w-auto hover:bg-gray-400  focus:outline-none focus:ring"
                         href="https://github.com/ZILECAO/easyA-hackathon"
                     >
                         View Code

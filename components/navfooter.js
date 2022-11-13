@@ -12,7 +12,7 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 
   // Top Navigation Element
   return (
-    <header class="py-1 bg-black">
+    <header class="py-1 bg-black font-mono">
       <div class="px-6 mx-auto max-w-screen-xl sm:px-6 lg:px-8 items-center">
 
         <div class="flex items-center justify-between h-16">
@@ -63,7 +63,7 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 export function Footer() {
   // Footer Element
   return (
-    <footer class="text-center bg-black">
+    <footer class="font-mono text-center bg-black">
       <div class="p-2 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2">
           <div class="flex justify-center gap-6 ">
