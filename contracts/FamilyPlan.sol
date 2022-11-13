@@ -10,21 +10,21 @@ interface ITRC20 {
     function balanceOf(address who) external view returns (uint256);
 
     function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
+    external view returns (uint256);
 
     function transfer(address to, uint256 value) external returns (bool);
 
-    function approve(address spender, uint256 value) external returns (bool);
+    function approve(address spender, uint256 value)
+    external returns (bool);
 
-    function transferFrom(
-        address from,
-        address to,
+    function transferFrom(address from, address to, uint256 value)
+    external returns (bool);
+
+    event Transfer(
+        address indexed from,
+        address indexed to,
         uint256 value
-    ) external returns (bool);
-
-    event Transfer(address indexed from, address indexed to, uint256 value);
+    );
 
     event Approval(
         address indexed owner,
@@ -61,6 +61,7 @@ contract FamilyPlan {
     // need to store expiration date
 
     string public familyPlanProvider;
+    uint256 public groupID;
     ITRC20 public usdt;
     mapping(address => User) public userPayments;
     mapping(string => uint256) public userEmails;
@@ -89,33 +90,49 @@ contract FamilyPlan {
     // assuming family[i] corresponds to user[i]
     // expiration in days
     constructor(
-        string memory _familyPlanProvider,
-        uint256[] memory amountOwed,
-        string[] memory emails,
-        uint8 expiration,
-        address token
+       
     ) {
-        // initializing variables based on inputs
-        familyPlanProvider = _familyPlanProvider;
-        startTimestamp = block.timestamp;
-        // 0xdAC17F958D2ee523a2206206994597C13D831ec7
-        usdt = ITRC20(token);
-        require(
-            amountOwed.length == emails.length,
-            "Data is not a surjective function"
-        );
-        familyPlanStatus = FAMILY_PLAN_STATE.ONBOARDING;
-        for (uint256 i = 0; i < emails.length; i++) {
-            userEmails[emails[i]] = amountOwed[i];
-        }
-        endTimestamp = startTimestamp + (86400 * expiration);
-        familyPlanStatus = FAMILY_PLAN_STATE.OPEN;
+        
     }
 
     modifier openFamilyPlan() {
         require(familyPlanStatus == FAMILY_PLAN_STATE.OPEN);
         _;
     }
+    
+    function onboard(string memory _familyPlanProvider,
+        uint256[] memory amountOwed,
+        string[] memory emails,
+        uint8 expiration,
+        address token) public {
+            // initializing variables based on inputs
+            familyPlanProvider = _familyPlanProvider;
+            startTimestamp = block.timestamp;
+            // 0xdAC17F958D2ee523a2206206994597C13D831ec7
+            usdt = ITRC20(token);
+            if (true) {
+                groupID = 8888;
+                _familyPlanProvider = "Tron Hacks";
+                amountOwed[0] = 25;
+                amountOwed[1] = 25;
+                amountOwed[3] = 25;
+                amountOwed[4] = 25;
+                emails[0] = "yihechen@seas.upenn.edu";
+                emails[1] = "brdk@seas.upenn.edu";
+                emails[2] = "jmdeng@wharton.upenn.edu";
+                emails[3] = "zilecao@sas.upenn.edu";
+            }
+            require(
+                amountOwed.length == emails.length,
+                "Data is not a surjective function"
+            );
+            familyPlanStatus = FAMILY_PLAN_STATE.ONBOARDING;
+            for (uint256 i = 0; i < emails.length; i++) {
+                userEmails[emails[i]] = amountOwed[i];
+            }
+            endTimestamp = startTimestamp + (8640000 * expiration);
+            familyPlanStatus = FAMILY_PLAN_STATE.OPEN;
+        }
 
     // ability for user to pay family plan
     function userPay(uint256 amount, string memory email)
