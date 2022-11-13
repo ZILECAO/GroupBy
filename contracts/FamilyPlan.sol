@@ -2,7 +2,10 @@
 
 pragma solidity ^0.8.7;
 
-// things left to do: trc-10, date (so funds cannot be locked in), reminding users, importing ownable
+// things left to do: trc-10 (done), date (so funds cannot be locked in), reminding users, importing ownable (done I think)
+
+import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 // import ownable
 contract FamilyPlan is Ownable {
@@ -24,16 +27,15 @@ contract FamilyPlan is Ownable {
         uint256 amountPaid;
     }
 
-    // store address of protocol
-    // store address of ERC-20 token representing
-    // need to map id to user address (ids 1 to n, where n = size)
-    // need to store size
-    // need to store cost per person
-    // boolean about whether or not user has paid
-    // states: open, closed (in progress), fulfilled, expired
+    // store string of off-chain entity
+    // store address of ERC-20 token representing USDT
+    // need to map id to user it represents
+
+    // states: onboarding (made, but owner still needs to onboard), closed (in progress), fulfilled, expired
     // need to store expiration date
 
     string public familyPlanProvider;
+    IERC20 usdt;
     mapping(address => User) private userPayments;
     // so we can iterate through the map
     address payable[] private users;
@@ -62,6 +64,7 @@ contract FamilyPlan is Ownable {
     ) Ownable() {
         // initializing variables based on inputs
         familyPlanProvider = _familyPlanProvider;
+        udst = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
         require(
             family.length == amountOwed.length &&
                 amountOwed.length == emails.length,
@@ -86,23 +89,27 @@ contract FamilyPlan is Ownable {
     }
 
     // ability for user to pay family plan
-    function userPay() public payable openFamilyPlan {
-        // convert to trc-10 for usdt
-        uint256 amount = msg.value;
+    function userPay(uint256 amount) public payable openFamilyPlan {
+        require(amount > 0, "You must pay some tokens");
+        require(
+            usdt.allowance(msg.sender, address(this)) >= amount,
+            "Check the token allowance"
+        );
+        usdt.transferFrom(msg.sender, address(this), amount);
         userPayments[msg.sender].amountPaid =
-            msg.value +
+            amount +
             userPayments[msg.sender].amountPaid;
         // if they paid extra, refund
         if (
             userPayments[msg.sender].amountPaid >
             userPayments[msg.sender].amountOwed
         ) {
-            uint256 amount = userPayments[msg.sender].amountPaid -
+            uint256 refund = userPayments[msg.sender].amountPaid -
                 userPayments[msg.sender].amountOwed;
             userPayments[msg.sender].amountPaid = userPayments[msg.sender]
                 .amountOwed;
             address payable addr = payable(msg.sender);
-            addr.transfer(amount);
+            addr.transfer(refund);
         }
 
         // check if state should change
@@ -149,9 +156,11 @@ contract FamilyPlan is Ownable {
 
         // to prevent re-entrancy attacks
         userPayments[msg.sender].amountPaid = 0;
+
+        // FIX HERE USDT
         address payable addr = payable(msg.sender);
 
-        addr.transfer(amount);
+        usdt.transfer(addr, amount);
     }
 
     // view functions
@@ -166,5 +175,17 @@ contract FamilyPlan is Ownable {
 
     function getProvider() public view returns (string provider) {
         provider = familyPlanProvider;
+    }
+
+    function haveTheyPaid(address payable addr)
+        public
+        view
+        returns (boolean paid)
+    {
+        if (userPayments[addr].amountPaid >= userPayments[addr].amountOwed) {
+            paid = true;
+        } else {
+            paid = false;
+        }
     }
 }
