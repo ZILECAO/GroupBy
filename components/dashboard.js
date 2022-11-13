@@ -23,6 +23,7 @@ export function Dashboard({ instance }) {
 
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const [group1, setGroup1] = useState(false);
   const [product, setProduct] = useState("NFT Pass | 25 USD");
   const [groupName, setGroupName] = useState("");
   const [memberEmail1, setMemberEmail1] = useState([]);
@@ -31,6 +32,8 @@ export function Dashboard({ instance }) {
   const [memberEmail4, setMemberEmail4] = useState([]);
 
   const onSubmit = (e) => {
+    setShowModal(false)
+    setGroup1(true)
     e.preventDefault()
     if (!product || !groupName || !memberEmail1 || !memberEmail2 || !memberEmail3 || !memberEmail4) {
       alert('incomplete fields')
@@ -62,12 +65,7 @@ export function Dashboard({ instance }) {
     setMemberEmail2('')
     setMemberEmail3('')
     setMemberEmail4('')
-<<<<<<< HEAD
   }
-=======
-    
-}
->>>>>>> 07f2e127e62f7b4367570ceaec748297b96125a7
 
   return (
     <section class="">
@@ -219,6 +217,7 @@ export function Dashboard({ instance }) {
                           className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-white font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none justify-center bg-gray-700"
                           type="button"
                           onClick={onSubmit}
+
                         >
                           Create Group
                         </button>
@@ -236,6 +235,7 @@ export function Dashboard({ instance }) {
 
           {/* column list of events */}
 
+          {group1 ? (
           <>
             <button
               className="mt-4 transition ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-indigo-500 duration-300 font-mono pr-8 pl-4 text-white flex flex-row bg-gray-700 rounded-lg items-center"
@@ -319,6 +319,8 @@ export function Dashboard({ instance }) {
               </>
             ) : null}
           </>
+
+          ) : null}
 
         </nav>
 
