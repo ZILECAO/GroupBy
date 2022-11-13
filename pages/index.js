@@ -2,37 +2,36 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
+const TronWeb = require('tronweb');
 import { useEffect, useState } from "react";
 import { contractABI } from '../components/contractABI.js';
 import { Nav } from '../components/navfooter';
 import { Landing } from '../components/landing';
 import { Dashboard } from '../components/dashboard';
 import { Web3Provider } from '@ethersproject/providers';
-
+import { testABI } from '../components/contractABI.js';
 const contractAddress = '';
 let provider;
-//no tron wallet case
+const server = "https://api.shasta.trongrid.io";
+const address = "TPbCp2b2PEwny7GVKBUtTnyhuUbLN4vNp6";
+const tronweb = new TronWeb({ fullHost: server, solidityNode: server, eventServer: server, privateKey: process.env.PRIVATE_KEY });
+
 if (typeof window !== 'undefined' && typeof window.tronWeb !== 'undefined') {
-    // we are in the browser and metamask is running
-    window.tronWeb.request({ method: "tron_requestAccounts" });
-    provider = new ethers.providers.Web3Provider(window.tronWeb);
+
+    // window.tronWeb.request({ method: "tron_requestAccounts" });
+    provider = new tronweb.providers.HttpProvider("https://rpc.ankr.com/http/tron");
 
 }
 else {
-    // we are on the server *OR* the user is not running metamask
-    // https://medium.com/jelly-market/how-to-get-infura-api-key-e7d552dd396f
-    provider = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/http/tron");
-    // provider = new ethers.providers.Web3Provider(provider);
-}
-// get the end user
-const signer = provider.getSigner();
 
-// get the smart contract
-const easyAContract = new ethers.Contract(
-    contractAddress,
-    contractABI,
-    signer
-);
+    provider = new tronweb.providers.HttpProvider("https://rpc.ankr.com/http/tron");
+
+}
+
+
+let instance;
+
+instance = tronweb.contract(testABI, address);
 
 
 export default function Home() {
@@ -110,7 +109,7 @@ export default function Home() {
         <section class="text-black bg-white pb-32">
 
             {/* Nav bar and check that wallet account is connected */}
-            <Nav connectAccounts={connectAccounts} accounts={accounts} setAccounts={setAccounts} />
+            <Nav connectAccounts={connectAccounts} accounts={accounts} setAccounts={setAccounts} authenticated={authenticated} />
 
             {authenticated ? <Dashboard /> : <Landing />}
         </section>

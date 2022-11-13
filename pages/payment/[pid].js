@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { testABI } from '../../components/contractABI';
 
 const TronWeb = require('tronweb');
@@ -22,96 +22,117 @@ const contractAddress = '';
 
 const server = "https://api.shasta.trongrid.io";
 const address = "TPbCp2b2PEwny7GVKBUtTnyhuUbLN4vNp6";
-const tronWeb = new TronWeb({fullHost:server, solidityNode:server, eventServer:server, privateKey: process.env.PRIVATE_KEY});
+const tronWeb = new TronWeb({ fullHost: server, solidityNode: server, eventServer: server, privateKey: process.env.PRIVATE_KEY });
 
 tronWeb.setAddress(address);
 
 const PaymentPage = () => {
-  const router = useRouter()
-  const { pid,index } = router.query
-  const [username,setUsername] = useState('')
-  const [password,setPassword] = useState('')
-  
-//   let instance;
-//   const getContract = async () => {
-//     let instance = await tronWeb.contract(testABI,address);
-//   }
+    const router = useRouter()
+    const { pid, index } = router.query
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-//   const getOwner = async () => {
-//     const owner = await instance.owner().call();
-//   }
-//   const getProvider = async () => {
-//     const provider = await instance.getProvider().call();
-//     }
-//     //not yet implemented
-//   const getHowMuch = async () => {
-//     const howMuch = await instance.howMuch().call();
-//     }
-// //   getContract();
-//   const fromWhom = getOwner();
-//   const forWhat = getProvider();
-//   const howMuch =getHowMuch();
-  const fromWhom ='';
-  const forWhat = '';
-  const howMuch ='';
+    const [favNum,setFavNum] = useState(0)
+    const [fromWhom,setOwner] = useState('');
+    const [forWhat, setProvider] = useState('');
+    const [howMuch, setHowMuch] = useState('');
 
-  const onSubmit=(e)=>{
-    e.preventDefault()
-    if(!username||!password){
-        alert('incomplete fields')
-        return
+    let instance;
+    
+    instance =  tronWeb.contract(testABI,address);
+      
+
+      
+        
+
+   useEffect(() => {
+    const getNumber = async () => {
+        let result  = await instance.favouriteNumber().call();
+        setFavNum(result)
+        getNumber();
+   }},[])
+
+
+    // useEffect(() => {
+    //     const getOwner = async () => {
+    //         let fromWhom = await instance.owner().call();
+    //         setOwner(fromWhom);
+    //       }
+    //       const getProvider = async () => {
+    //         let forWhat = await instance.getProvider().call();
+    //         setProvider(forWhat);
+    //         }
+    //         //not yet implemented
+    //       const getHowMuch = async () => {
+    //         let howMuch = await instance.howMuch().call();
+    //         setHowMuch(howMuch);
+    //       }
+    //     getOwner();
+    //     getProvider();
+    //     getHowMuch();
+    // }, [])
+
+    // const fromWhom = '';
+    // const forWhat = '';
+    // const howMuch = '';
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        if (!username || !password) {
+            alert('incomplete fields')
+            return
+        }
+
+
+        console.log(`Name is ${username}`)
+        console.log(`Post is ${password}`)
+        setUsername('')
+        setPassword('')
     }
-    
-    
-    console.log(`Name is ${username}`)
-    console.log(`Post is ${password}`)
-    setUsername('')
-    setPassword('')
-}
-const submitTrasaction=async(e)=>{
-    e.preventDefault()
-    //
-    
-   
-    
-    console.log ('callResult',callResult)
-    
-}
-  const getPaidUsers = [1,2];
-  const getNotPaidUsers = [1,2];
-  return(
-    <div>
-        <p>GID: {pid} Index: {index}</p>
+    const submitTrasaction = async (e) => {
+        e.preventDefault()
+        //
+
+
+
+        console.log('callResult', callResult)
+
+    }
+    const getPaidUsers = [1, 2];
+    const getNotPaidUsers = [1, 2];
+    return (
         <div>
-            <p>You've got a new group request from {fromWhom}</p>
-        </div>
-        <div><h2>Plan information</h2></div>
-        <p>--------</p>
-        <div>
-            <p>Vendor:{forWhat}</p>
-            <p>AmountOwed:{howMuch}</p>
-        </div>
-        <div>
-                <form onSubmit={onSubmit} className ='border-black '>
+            <p>GID: {pid} Index: {index}</p>
+            <div>
+                <p>You've got a new group request from {fromWhom}</p>
+            </div>
+            <div><h2>Plan information</h2></div>
+            <p>--------</p>
+            <div>
+                <p>Vendor:{forWhat}</p>
+                <p>AmountOwed:{howMuch}</p>
+            </div>
+            <div>
+                <form onSubmit={onSubmit} className='border-black '>
                     <label>
-                    Username:
-                    <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)} className ='border-black bg-blue-500 ' />
+                        Username:
+                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className='border-black bg-blue-500 ' />
                     </label>
                     <label>
-                    Pasword:
-                    <input type="text" value={password} onChange={(e)=>setPassword(e.target.value)} className ='border-black bg-blue-500 ' />
+                        Pasword:
+                        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} className='border-black bg-blue-500 ' />
                     </label>
 
                     <input type="submit" value="Submit" />
                 </form>
-                
+
+            </div>
+            <div><h2>Funding</h2></div>
+            <p>--------</p>
+            <p>Funding completed {getPaidUsers.length}/ {getPaidUsers.length + getNotPaidUsers.length}</p>
+            <button onClick={submitTrasaction} className='bg-green-500'> Pay {howMuch} USDT with TronLink</button>
         </div>
-        <div><h2>Funding</h2></div>
-        <p>--------</p>
-        <p>Funding completed {getPaidUsers.length}/ {getPaidUsers.length+getNotPaidUsers.length}</p>
-        <button onClick={submitTrasaction  } className='bg-green-500'> Pay {howMuch} USDT with TronLink</button>
-    </div>
-  ) 
+    )
 }
 
 export default PaymentPage
