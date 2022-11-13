@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -110,9 +109,7 @@ export default function Home() {
     return (
         <section class="text-black bg-white pb-32">
 
-        <Head>
-            <link rel="shortcut icon" href="../favicon.ico" />
-        </Head>
+         {/* Nav bar and check that wallet account is connected */}
         <Nav connectAccounts = {connectAccounts} accounts={accounts} setAccounts = {setAccounts}/>
         
         {authenticated ? <Dashboard/>: <Landing/>}
