@@ -4,11 +4,10 @@ pragma solidity ^0.8.7;
 
 // things left to do
 
-import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 // import ownable
-contract FamilyPlan is Ownable {
+contract FamilyPlan {
     // enum of stored state
     enum FAMILY_PLAN_STATE {
         OPEN,
@@ -37,9 +36,10 @@ contract FamilyPlan is Ownable {
     string public familyPlanProvider;
     uint256 public groupID;
     IERC20 public usdt;
-    mapping(address => User) public userPayments;
     mapping(string => uint256) public userEmails;
     User[] public data;
+    uint256[] amountOwed;
+    string[] emails;
     // so we can iterate through the map
     address payable[] private users;
     FAMILY_PLAN_STATE public familyPlanStatus;
@@ -63,21 +63,20 @@ contract FamilyPlan is Ownable {
     // constructor
     // assuming family[i] corresponds to user[i]
     // expiration in days
-    constructor() Ownable() {
-        uint256[] memory amountOwed;
-        string[] memory emails;
-        usdt = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
-
+    constructor() {
         groupID = 8888;
-        _familyPlanProvider = "Tron Hacks";
-        amountOwed[0] = 25;
-        amountOwed[1] = 25;
-        amountOwed[3] = 25;
-        amountOwed[4] = 25;
-        emails[0] = "yihechen@seas.upenn.edu";
-        emails[1] = "brdk@seas.upenn.edu";
-        emails[2] = "jmdeng@wharton.upenn.edu";
-        emails[3] = "zilecao@sas.upenn.edu";
+        familyPlanProvider = "Tron Hacks";
+
+        usdt = IERC20(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+
+        amountOwed.push(25);
+        amountOwed.push(25);
+        amountOwed.push(25);
+        amountOwed.push(25);
+        emails.push("yihechen@seas.upenn.edu");
+        emails.push("brdk@seas.upenn.edu");
+        emails.push("jmdeng@wharton.upenn.edu");
+        emails.push("zilecao@sas.upenn.edu");
 
         // 5 days time
         uint8 expiration = 5;
@@ -85,7 +84,7 @@ contract FamilyPlan is Ownable {
         familyPlanStatus = FAMILY_PLAN_STATE.ONBOARDING;
         for (uint256 i = 0; i < emails.length; i++) {
             userEmails[emails[i]] = amountOwed[i];
-            data.push(User(0, emails[i], amountOwed[i], 0));
+            data.push(User(payable(0), emails[i], amountOwed[i], 0));
         }
         endTimestamp = startTimestamp + (86400 * expiration);
         familyPlanStatus = FAMILY_PLAN_STATE.OPEN;
@@ -97,27 +96,14 @@ contract FamilyPlan is Ownable {
     }
 
     // ability for user to pay family plan
-    function userPay(uint256 amount, string memory email)
-        public
-        payable
-        openFamilyPlan
-    {
+    function userPay(uint256 amount) public payable openFamilyPlan {
         if (block.timestamp > endTimestamp) {
             refund();
             revert("Contract expired");
         }
         require(amount > 0, "must pay non-zero amound");
-        require(
-            usdt.allowance(msg.sender, address(this)) >= amount,
-            "Check the token allowance"
-        );
 
         usdt.transferFrom(msg.sender, address(this), amount);
-    }
-
-    // calls oracle
-    function submitPayment() internal {
-        // need Brandon's help with this
     }
 
     // also need oracle that watches if order succeeds or not. If failed, call refund()
@@ -134,9 +120,5 @@ contract FamilyPlan is Ownable {
             "Cannot only refund if payment did not go through"
         );
         usdt.transfer(payable(msg.sender), 1);
-    }
-
-    function data() public view returns (User[] memory) {
-        return data;
     }
 }
