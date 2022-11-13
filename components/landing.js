@@ -10,15 +10,17 @@ export function Landing() {
                 </h1>
 
                 <h1 class="pb-2 text-5xl font-medium font-mono text-slate-400">
-                    for on-chain and off-chain
+                    Use your crypto. Securely.
                 </h1>
 
                 <p class="text-white pt-6 max-w-2xl mx-auto font-mono mt-1 sm:leading-relaxed sm:text-md ">
-                   Buying with friends has never been easier. {"\n"}
+                Never have to coordinate bill spliting manually again. {"\n"}
+                   
+
                 </p>
 
                 <p class="text-white max-w-xl mx-auto font-mono sm:leading-relaxed sm:text-md">
-                    Create group, get notified via email, pay and the rest is <a class ="animate-pulse">magic</a> {"\n"}
+                Use oracles to native integrate with millions of web2 applications, ecommerce..{"\n"}
                 </p>
 
                 <div class="flex font-mono flex-wrap justify-center mt-8 gap-4">
@@ -37,7 +39,7 @@ export function Landing() {
                 </div>
 
                 <p class="text-white pt-8 max-w-xl font-mono text-xs font-bold mx-auto sm:leading-relaxed sm:text-md">
-                    Use case: Pay your spotify family plan  {"\n"}
+                    Ask us about how to split bill for a GTA5 (via gift card)  {"\n"}
                 </p>
 
 
