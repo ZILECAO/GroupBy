@@ -10,6 +10,8 @@ import React from "react";
 
 
 
+
+
 const contractAddress = '';
 
 let provider;
@@ -105,7 +107,7 @@ export default function Home() {
                             Create new event
                         </button>
                         {showModal ? (
-                            <>
+                    <>
                                 <div
                                     className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                                 >
@@ -115,10 +117,10 @@ export default function Home() {
                                             {/*header*/}
                                             <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                                 <h3 className="text-3xl font-semibold">
-                                                    Modal Title
+                                                    Create a group
                                                 </h3>
                                                 <button
-                                                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                                    className="p-1 ml-auto border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                                                     onClick={() => setShowModal(false)}
                                                 >
                                                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -127,34 +129,48 @@ export default function Home() {
                                                 </button>
                                             </div>
                                             {/*body*/}
-                                            <div className="relative p-6 flex-auto">
+                                            <div className="relative p-6 flex-auto ">
                                                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                                    I always felt like I could do anything. That’s the main
-                                                    thing people are controlled by! Thoughts- their perception
-                                                    of themselves!
+                                                    1. Choose the service
                                                 </p>
+                                                
+                                                <div id="select">
+                                                <div className="mb-2 block text-white bg-blue-700">
+                                                    <label
+                                                    htmlFor="countries"
+                                                    value="Select your country"
+                                                    />
+                                                </div>
+                                                <select
+                                                    id="countries"
+                                                    required={true}
+                                                >
+                                                    <option>
+                                                    NFT Pass | 25 USD
+                                                    </option>
+                                                    <option>
+                                                    Concert Tix | 100 USD
+                                                    </option>
+                                                </select>
+                                                </div>
+
+
                                             </div>
                                             {/*footer*/}
-                                            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                            <div className="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b">
                                                 <button
-                                                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                    className="bg-blue-700 text-white hover:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none justify-center"
                                                     type="button"
                                                     onClick={() => setShowModal(false)}
                                                 >
-                                                    Close
-                                                </button>
-                                                <button
-                                                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                                    type="button"
-                                                    onClick={() => setShowModal(false)}
-                                                >
-                                                    Save Changes
+                                                    Create Group
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                            
+                            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                             </>
                         ) : null}
                     </>
@@ -278,6 +294,9 @@ export default function Home() {
                     </div>
                 </nav>
             </div>
+
+
+            
 
 
         </section>
