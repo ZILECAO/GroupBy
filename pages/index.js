@@ -111,7 +111,7 @@ export default function Home() {
             {/* Nav bar and check that wallet account is connected */}
             <Nav connectAccounts={connectAccounts} accounts={accounts} setAccounts={setAccounts} authenticated={authenticated} />
 
-            {authenticated ? <Dashboard /> : <Landing />}
+            {authenticated ? <Dashboard instance ={instance} /> : <Landing />}
         </section>
 
 
