@@ -11,7 +11,7 @@ import { Web3Provider } from '@ethersproject/providers';
 
 const contractAddress = '';
 let provider;
-
+//no tron wallet case
 if (typeof window !== 'undefined' && typeof window.tronWeb !== 'undefined') {
     // we are in the browser and metamask is running
     window.tronWeb.request({ method: "tron_requestAccounts" });
