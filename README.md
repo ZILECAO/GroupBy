@@ -5,15 +5,10 @@
 
 ```
 yarn install 
+npm install
 ```
 
-3. create a new file in the root directory named ".env" and paste the following: 
-
-```
-PRIVATE_KEY=
-```
-
-4. Run dev mode
+3. Run dev mode
 
 ```
 yarn dev
