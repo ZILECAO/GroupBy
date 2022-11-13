@@ -4,11 +4,37 @@ pragma solidity ^0.8.7;
 
 // things left to do
 
-import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+interface ITRC20 {
+    function totalSupply() external view returns (uint256);
+
+    function balanceOf(address who) external view returns (uint256);
+
+    function allowance(address owner, address spender)
+        external
+        view
+        returns (uint256);
+
+    function transfer(address to, uint256 value) external returns (bool);
+
+    function approve(address spender, uint256 value) external returns (bool);
+
+    function transferFrom(
+        address from,
+        address to,
+        uint256 value
+    ) external returns (bool);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
+}
 
 // import ownable
-contract FamilyPlan is Ownable {
+contract FamilyPlan {
     // enum of stored state
     enum FAMILY_PLAN_STATE {
         OPEN,
@@ -35,8 +61,7 @@ contract FamilyPlan is Ownable {
     // need to store expiration date
 
     string public familyPlanProvider;
-    uint256 public groupID;
-    IERC20 public usdt;
+    ITRC20 public usdt;
     mapping(address => User) public userPayments;
     mapping(string => uint256) public userEmails;
     User[] public data;
@@ -68,26 +93,13 @@ contract FamilyPlan is Ownable {
         uint256[] memory amountOwed,
         string[] memory emails,
         uint8 expiration,
-        uint256 _groupID
-    ) Ownable() {
+        address token
+    ) {
         // initializing variables based on inputs
         familyPlanProvider = _familyPlanProvider;
         startTimestamp = block.timestamp;
         // 0xdAC17F958D2ee523a2206206994597C13D831ec7
-        usdt = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
-        // hard code for demo
-        if (true) {
-            groupID = 8888;
-            _familyPlanProvider = "Tron Hacks";
-            amountOwed[0] = 25;
-            amountOwed[1] = 25;
-            amountOwed[3] = 25;
-            amountOwed[4] = 25;
-            emails[0] = "yihechen@seas.upenn.edu";
-            emails[1] = "brdk@seas.upenn.edu";
-            emails[2] = "jmdeng@wharton.upenn.edu";
-            emails[3] = "zilecao@sas.upenn.edu";
-        }
+        usdt = ITRC20(token);
         require(
             amountOwed.length == emails.length,
             "Data is not a surjective function"
@@ -199,10 +211,6 @@ contract FamilyPlan is Ownable {
     }
 
     // view functions
-
-    function getOwner() public view returns (address owner) {
-        owner = super.owner();
-    }
 
     function getState() public view returns (FAMILY_PLAN_STATE state) {
         state = familyPlanStatus;
