@@ -12,7 +12,7 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 
   // Top Navigation Element
   return (
-    <header class="py-1 bg-white">
+    <header class="py-1 bg-black">
       <div class="px-6 mx-auto max-w-screen-xl sm:px-6 lg:px-8 items-center">
 
         <div class="flex items-center justify-between h-16">
@@ -20,7 +20,7 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 
             <Link href="/">
               <button>
-                <img src={'../vector.png'} alt="GroupPay logo" />
+                <img src={'../Vector2.png'} alt="GroupPay logo" />
               </button>
             </Link>
 
@@ -28,26 +28,26 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 
           <div class="flex text-sm items-center gap-6 justify-end pl-4">
             <Link href="/">
-              <a class="text-gray-500 transition hover:text-gray-500/75">
+              <a class="text-white transition hover:text-white/75">
                 Home
               </a>
             </Link>
 
             <Link href="/">
-              <a class="text-gray-500 transition hover:text-gray-500/75">
+              <a class="text-white transition hover:text-white/75">
                 About
               </a>
             </Link>
 
             <Link href="/">
-              <a class="text-gray-500 transition hover:text-gray-500/75">
+              <a class="text-white transition hover:text-white/75">
                 Features
               </a>
             </Link>
 
 
             
-            <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md shadow">
+            <a class="px-5 py-2.5 text-sm font-medium text-white bg-violet-900 hover:bg-violet-800 rounded-md shadow">
              {!authenticated?<button onClick={() => connectAccounts()}>Sign in with TronLink</button> :<button>Signed In</button>} 
             </a>
 
@@ -63,7 +63,7 @@ export function Nav({ connectAccounts, accounts, setAccounts,authenticated }) {
 export function Footer() {
   // Footer Element
   return (
-    <footer class="text-center bg-white">
+    <footer class="text-center bg-black">
       <div class="p-2 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2">
           <div class="flex justify-center gap-6 ">
@@ -111,7 +111,7 @@ export function Footer() {
 
 
 
-          <p class="max-w-xl mx-auto text-xs text-gray-500">
+          <p class="max-w-xl mx-auto text-xs text-white">
             <span class="block"> &copy; 2022 Product Name | Hack Web3 EasyA Hackathon @ Harvard.  </span>
           </p>
         </div>
