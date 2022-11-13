@@ -24,7 +24,7 @@ export function Landing() {
                 </p>
 
                 <div class="flex font-mono flex-wrap justify-center mt-8 gap-4">
-                    <Link href="/home">
+                    <Link href="">
                         <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-black border hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring ">
                             Learn More
                         </a>
