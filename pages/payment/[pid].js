@@ -126,8 +126,8 @@ const PaymentPage = () => {
                 <div class="text-white font-bold font-mono uppercase text-sm px-6 pt-3 outline-none focus:outline-none justify-center">Plan information</div>
                 <p class="text-white font-bold font-mono uppercase text-sm px-6 outline-none focus:outline-none justify-center">--------</p>
                 <div class="text-white font-mono text-sm px-6 pb-8 outline-none focus:outline-none justify-center">
-                    <p>Vendor: {forWhat}</p>
-                    <p>AmountOwed: {howMuch}</p>
+                    <p class="text-green-700">Vendor: {forWhat}</p>
+                    <p class="text-red-700">AmountOwed: {howMuch}</p>
                 </div>
 
                 
@@ -146,7 +146,7 @@ const PaymentPage = () => {
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className='border-black bg-gray-200 rounded text-black' />
                         </label>
 
-                        <input type="submit" value="Submit" class = "mt-3 ml-6 transition ease-in-out hover:-translate-y-1 hover:scale-95 hover:bg-indigo-500 duration-300 font-mono block w-full px-2 py-2 font-xs text-white bg-gray-700 rounded sm:w-auto"/>
+                        <input type="submit" value="Submit" class = "cursor-pointer mt-3 ml-6 transition ease-in-out hover:-translate-y-1 hover:scale-95 hover:bg-indigo-500 duration-300 font-mono block w-full px-2 py-2 font-xs text-white bg-gray-700 rounded sm:w-auto"/>
                     </form>
 
                 </div>
