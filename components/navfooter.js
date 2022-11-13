@@ -6,23 +6,23 @@ import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { Web3Provider } from '@ethersproject/providers';
 
-export function Nav() {
+export function Nav({connectAccounts,accounts,setAccounts}) {
 
     //Connecting Wallet
-    const [accounts, setAccounts] = useState([]);
+    // const [accounts, setAccounts] = useState([]);
 
-    async function connectAccounts() {
-      if (window.ethereum) {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts"
-        });
-        setAccounts(accounts);
-      }
-    }
+    // async function connectAccounts() {
+    //   if (window.tronWeb) {
+    //     const accounts = await window.tronWeb.request({
+    //       method: "tron_requestAccounts"
+    //     });
+    //     setAccounts(accounts);
+    //   }
+    // }
 
-    useEffect(() => {
-      connectAccounts();
-    }, []);
+    // useEffect(() => {
+    //   connectAccounts();
+    // }, []);
 
 
 
@@ -64,7 +64,7 @@ export function Nav() {
         
 
               <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md shadow">
-                <button onClick={connectAccounts}>Sign in with Metamask</button>
+                <button onClick={()=>connectAccounts()}>Sign in with TronLink</button>
               </a>
 
               </div>
@@ -134,3 +134,4 @@ export function Footer() {
       </div>
     </footer>)
 }
+

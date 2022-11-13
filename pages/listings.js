@@ -5,31 +5,27 @@ import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { contractABI } from '../components/contractABI.js';
-import { Nav } from '../components/navfooter';
-import {Landing} from '../components/landing';
-import {Dashboard} from '../components/dashboard';
-import { Web3Provider } from '@ethersproject/providers';
 
 const contractAddress = '';
+
 let provider;
 
-if (typeof window !== 'undefined' && typeof window.tronWeb !== 'undefined') {
+if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
     // we are in the browser and metamask is running
-    window.tronWeb.request({ method: "tron_requestAccounts" });
-    provider = new ethers.providers.Web3Provider(window.tronWeb);
-    
+    window.ethereum.request({ method: "eth_requestAccounts" });
+    provider = new ethers.providers.Web3Provider(window.ethereum);
 }
 else {
     // we are on the server *OR* the user is not running metamask
     // https://medium.com/jelly-market/how-to-get-infura-api-key-e7d552dd396f
-    provider = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/http/tron");
+    provider = new ethers.providers.JsonRpcProvider("https://eth-goerli.g.alchemy.com/v2/<insert alchemy key or use infura http link>");
     // provider = new ethers.providers.Web3Provider(provider);
 }
 // get the end user
 const signer = provider.getSigner();
 
 // get the smart contract
-const easyAContract = new ethers.Contract(
+const donoContract = new ethers.Contract(
     contractAddress,
     contractABI,
     signer
@@ -40,45 +36,20 @@ export default function Home() {
 
     //Connecting Wallet
     const [accounts, setAccounts] = useState([]);
-    // setAccounts(preRenderAddress);
     const [buttonState, setButtonState] = useState(false);
     const [noteURI, setNoteURI] = useState("");
     const [user, setUser] = useState("");
     const [description, setDescription] = useState("");
     const [URIList, setURIList] = useState([]);
-    const [authenticated, setAuthenticated] = useState(false);
-    
 
-    const connectAccounts= async () => {
-      if (window.tronWeb) {
-        const temp_accounts = await window.tronWeb.request({
-          method: "tron_requestAccounts"
-        });
-        const publicAddress = tronWeb.defaultAddress.base58
-        setAccounts(publicAddress);
-        if (accounts.length > 0) {
-            setAuthenticated(true);
-        }else{
-            setAuthenticated(false);
+    async function connectAccounts() {
+        if (window.ethereum) {
+            const accounts = await window.ethereum.request({
+                method: "eth_requestAccounts"
+            });
+            setAccounts(accounts);
         }
-        
-        console.log('auth detected',authenticated)
-        console.log('accounts',accounts)
-        console.log('temp_accounts',temp_accounts)
-      }
     }
-    
-
-    useEffect(() => {
-      connectAccounts();
-      const publicAddress = tronWeb.defaultAddress.base58
-        setAccounts(publicAddress);
-        if (accounts.length > 0) {
-            setAuthenticated(true);
-        }else{
-            setAuthenticated(false);
-        }
-    }, [authenticated]);
     // wallet balance
     const [balance, setBalance] = useState();
 
@@ -105,18 +76,22 @@ export default function Home() {
 
     }
 
-   
+
     // ACTUAL render page
     return (
-        <section class="text-black bg-white pb-32">
-
-        <Head>
-            <link rel="shortcut icon" href="../favicon.ico" />
-        </Head>
-        <Nav connectAccounts = {connectAccounts} accounts={accounts} setAccounts = {setAccounts}/>
+        <section class="text-white ">
+      
+      {/* Main Body Element */}
+      <div class="px-4 pt-12 pb-32 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+        <div class="max-w-lg mx-auto text-center">
+          <h2 class="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-green-500 via-blue-400 to-purple-700">
+          Listings {"\n"} 
+          </h2>
+        </div>
         
-        {authenticated ? <Dashboard/>: <Landing/>}
-        </section>  
+      </div>
+
+    </section>
 
 
     )
