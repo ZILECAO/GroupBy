@@ -32,10 +32,11 @@ const PaymentPage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const [favNum,setFavNum] = useState(0)
-    const [fromWhom,setOwner] = useState('');
-    const [forWhat, setProvider] = useState('');
-    const [howMuch, setHowMuch] = useState('');
+    const [favNum,setFavNum] = useState(0) 
+    //hard coded for demo
+    const [fromWhom,setOwner] = useState('THdUVA8Ey33A7P3Z4cfG5M2yEd6iEWZZym');
+    const [forWhat, setProvider] = useState('NFT Pass');
+    const [howMuch, setHowMuch] = useState('25');
 
     let instance;
     
@@ -50,6 +51,7 @@ const PaymentPage = () => {
         let result  = await instance.favouriteNumber().call();
         setFavNum(result)
         getNumber();
+        
    }},[])
 
 
@@ -75,6 +77,7 @@ const PaymentPage = () => {
     // const fromWhom = '';
     // const forWhat = '';
     // const howMuch = '';
+    
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -120,7 +123,7 @@ const PaymentPage = () => {
                     </label>
                     <label>
                         Pasword:
-                        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} className='border-black bg-blue-500 ' />
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className='border-black bg-blue-500 ' />
                     </label>
 
                     <input type="submit" value="Submit" />
