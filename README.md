@@ -1,3 +1,6 @@
+## Slide deck presentation: https://gateway.pinata.cloud/ipfs/QmThytReLYmTqRjaPfXaQpvp3RqyDvuEkMfYs8F9rthaDU
+
+
 ## How to install on your computer 
 
 1. Clone github repo
