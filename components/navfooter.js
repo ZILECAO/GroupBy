@@ -80,7 +80,7 @@ export function Footer() {
     // Footer Element
     return (
       <footer class="text-center bg-white">
-      <div class="px-4 pb-2 pt-4 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
+      <div class="p-2 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2">
           <div class="flex justify-center gap-6 ">
             <a

@@ -25,7 +25,7 @@ else {
 const signer = provider.getSigner();
 
 // get the smart contract
-const donoContract = new ethers.Contract(
+const easyAContract = new ethers.Contract(
     contractAddress,
     contractABI,
     signer
@@ -105,7 +105,7 @@ export default function Home() {
             </p>
         
             <div class="flex flex-wrap justify-center mt-8 gap-4">
-                <Link href="/listings">
+                <Link href="/home">
                 <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-black border hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring animate-pulse">
                     Learn More
                 </a>
