@@ -1,6 +1,6 @@
 ## Live Website:
 
-*Must use have TronLink wallet installed on Chrome!*
+*Must have TronLink wallet installed on Chrome!*
 
 https://easy-a-hackathon.vercel.app/
 
