@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }) {
     <>
     <script src="https://cdn.jsdelivr.net/npm/tronweb@4.4.0/dist/TronWeb.js"></script>
       <Head>
-          <link rel="shortcut icon" href="../favicon.ico" />
+        <link rel="shortcut icon" href="../favicon.ico" />
       </Head>
-    
+
       {/* <Nav />   */}
       <Component {...pageProps} />
       <Footer />

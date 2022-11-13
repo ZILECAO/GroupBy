@@ -6,69 +6,69 @@ import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { Web3Provider } from '@ethersproject/providers';
 
-export function Nav({connectAccounts,accounts,setAccounts}) {
+export function Nav({ connectAccounts, accounts, setAccounts }) {
 
-    //Connecting Wallet
-    // const [accounts, setAccounts] = useState([]);
+  //Connecting Wallet
+  // const [accounts, setAccounts] = useState([]);
 
-    // async function connectAccounts() {
-    //   if (window.tronWeb) {
-    //     const accounts = await window.tronWeb.request({
-    //       method: "tron_requestAccounts"
-    //     });
-    //     setAccounts(accounts);
-    //   }
-    // }
+  // async function connectAccounts() {
+  //   if (window.tronWeb) {
+  //     const accounts = await window.tronWeb.request({
+  //       method: "tron_requestAccounts"
+  //     });
+  //     setAccounts(accounts);
+  //   }
+  // }
 
-    // useEffect(() => {
-    //   connectAccounts();
-    // }, []);
+  // useEffect(() => {
+  //   connectAccounts();
+  // }, []);
 
 
 
   // Top Navigation Element
-    return (
-      <header class="py-1 bg-white">
+  return (
+    <header class="py-1 bg-white">
       <div class="px-6 mx-auto max-w-screen-xl sm:px-6 lg:px-8 items-center">
-        
+
         <div class="flex items-center justify-between h-16">
           <div class="flex-1 md:flex md:items-center md:gap-12">
 
             <Link href="/">
-            <button>
-              <img src={'../vector.png'} alt="GroupPay logo"/>
-            </button>
+              <button>
+                <img src={'../vector.png'} alt="GroupPay logo" />
+              </button>
             </Link>
 
           </div>
 
           <div class="flex text-sm items-center gap-6 justify-end pl-4">
-                <Link href="/">
-                  <a class="text-gray-500 transition hover:text-gray-500/75">
-                    Home
-                  </a>
-                </Link>
-
-                <Link href="/">
-                  <a class="text-gray-500 transition hover:text-gray-500/75">
-                    About
-                  </a>
-                </Link>
-
-                <Link href="/">
-                  <a class="text-gray-500 transition hover:text-gray-500/75">
-                    Features
-                  </a>
-                </Link>
-          
-        
-
-              <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md shadow">
-                <button onClick={()=>connectAccounts()}>Sign in with TronLink</button>
+            <Link href="/">
+              <a class="text-gray-500 transition hover:text-gray-500/75">
+                Home
               </a>
+            </Link>
 
-              </div>
-                
+            <Link href="/">
+              <a class="text-gray-500 transition hover:text-gray-500/75">
+                About
+              </a>
+            </Link>
+
+            <Link href="/">
+              <a class="text-gray-500 transition hover:text-gray-500/75">
+                Features
+              </a>
+            </Link>
+
+
+
+            <a class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md shadow">
+              <button onClick={() => connectAccounts()}>Sign in with TronLink</button>
+            </a>
+
+          </div>
+
 
         </div>
       </div>
@@ -77,9 +77,9 @@ export function Nav({connectAccounts,accounts,setAccounts}) {
 }
 
 export function Footer() {
-    // Footer Element
-    return (
-      <footer class="text-center bg-white">
+  // Footer Element
+  return (
+    <footer class="text-center bg-white">
       <div class="p-2 mx-auto max-w-screen-xl sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto space-y-2">
           <div class="flex justify-center gap-6 ">
@@ -101,7 +101,7 @@ export function Footer() {
                 ></path>
               </svg>
             </a>
-  
+
             <a
               class="text-gray-700 hover:text-gray-800/75"
               href="" //TODO
@@ -122,11 +122,11 @@ export function Footer() {
                 ></path>
               </svg>
             </a>
-            
+
           </div>
-  
-          
-  
+
+
+
           <p class="max-w-xl mx-auto text-xs text-gray-500">
             <span class="block"> &copy; 2022 Product Name | Hack Web3 EasyA Hackathon @ Harvard.  </span>
           </p>

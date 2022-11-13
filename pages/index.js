@@ -5,8 +5,8 @@ import { ethers, BigNumber } from "ethers";
 import { useEffect, useState } from "react";
 import { contractABI } from '../components/contractABI.js';
 import { Nav } from '../components/navfooter';
-import {Landing} from '../components/landing';
-import {Dashboard} from '../components/dashboard';
+import { Landing } from '../components/landing';
+import { Dashboard } from '../components/dashboard';
 import { Web3Provider } from '@ethersproject/providers';
 
 const contractAddress = '';
@@ -16,7 +16,7 @@ if (typeof window !== 'undefined' && typeof window.tronWeb !== 'undefined') {
     // we are in the browser and metamask is running
     window.tronWeb.request({ method: "tron_requestAccounts" });
     provider = new ethers.providers.Web3Provider(window.tronWeb);
-    
+
 }
 else {
     // we are on the server *OR* the user is not running metamask
@@ -46,35 +46,35 @@ export default function Home() {
     const [description, setDescription] = useState("");
     const [URIList, setURIList] = useState([]);
     const [authenticated, setAuthenticated] = useState(false);
-    
 
-    const connectAccounts= async () => {
-      if (window.tronWeb) {
-        const temp_accounts = await window.tronWeb.request({
-          method: "tron_requestAccounts"
-        });
+
+    const connectAccounts = async () => {
+        if (window.tronWeb) {
+            const temp_accounts = await window.tronWeb.request({
+                method: "tron_requestAccounts"
+            });
+            const publicAddress = tronWeb.defaultAddress.base58
+            setAccounts(publicAddress);
+            if (accounts.length > 0) {
+                setAuthenticated(true);
+            } else {
+                setAuthenticated(false);
+            }
+
+            console.log('auth detected', authenticated)
+            console.log('accounts', accounts)
+            console.log('temp_accounts', temp_accounts)
+        }
+    }
+
+
+    useEffect(() => {
+        connectAccounts();
         const publicAddress = tronWeb.defaultAddress.base58
         setAccounts(publicAddress);
         if (accounts.length > 0) {
             setAuthenticated(true);
-        }else{
-            setAuthenticated(false);
-        }
-        
-        console.log('auth detected',authenticated)
-        console.log('accounts',accounts)
-        console.log('temp_accounts',temp_accounts)
-      }
-    }
-    
-
-    useEffect(() => {
-      connectAccounts();
-      const publicAddress = tronWeb.defaultAddress.base58
-        setAccounts(publicAddress);
-        if (accounts.length > 0) {
-            setAuthenticated(true);
-        }else{
+        } else {
             setAuthenticated(false);
         }
     }, [authenticated]);
@@ -104,16 +104,16 @@ export default function Home() {
 
     }
 
-   
+
     // ACTUAL render page
     return (
         <section class="text-black bg-white pb-32">
 
-         {/* Nav bar and check that wallet account is connected */}
-        <Nav connectAccounts = {connectAccounts} accounts={accounts} setAccounts = {setAccounts}/>
-        
-        {authenticated ? <Dashboard/>: <Landing/>}
-        </section>  
+            {/* Nav bar and check that wallet account is connected */}
+            <Nav connectAccounts={connectAccounts} accounts={accounts} setAccounts={setAccounts} />
+
+            {authenticated ? <Dashboard /> : <Landing />}
+        </section>
 
 
     )
