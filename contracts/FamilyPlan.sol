@@ -37,6 +37,7 @@ contract FamilyPlan is Ownable {
     string public familyPlanProvider;
     IERC20 usdt;
     mapping(address => User) public userPayments;
+    mapping(string => uint256) public userEmails;
     User[] public data;
     // so we can iterate through the map
     address payable[] private users;
@@ -63,7 +64,6 @@ contract FamilyPlan is Ownable {
     // expiration in days
     constructor(
         string memory _familyPlanProvider,
-        address payable[] memory family,
         uint256[] memory amountOwed,
         string[] memory emails,
         uint8 expiration
@@ -74,16 +74,12 @@ contract FamilyPlan is Ownable {
         // 0xdAC17F958D2ee523a2206206994597C13D831ec7
         usdt = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
         require(
-            family.length == amountOwed.length &&
-                amountOwed.length == emails.length,
+            amountOwed.length == emails.length,
             "Data is not a surjective function"
         );
         familyPlanStatus = FAMILY_PLAN_STATE.ONBOARDING;
-        for (uint256 i = 0; i < family.length; i++) {
-            User memory newUser = User(family[i], emails[i], amountOwed[i], 0);
-            userPayments[family[i]] = newUser;
-            data.push(newUser);
-            users.push(family[i]);
+        for (uint256 i = 0; i < emails.length; i++) {
+            userEmails[emails[i]] = amountOwed[i];
         }
         endTimestamp = startTimestamp + (86400 * expiration);
         familyPlanStatus = FAMILY_PLAN_STATE.OPEN;
@@ -95,7 +91,11 @@ contract FamilyPlan is Ownable {
     }
 
     // ability for user to pay family plan
-    function userPay(uint256 amount) public payable openFamilyPlan {
+    function userPay(uint256 amount, string memory email)
+        public
+        payable
+        openFamilyPlan
+    {
         if (block.timestamp > endTimestamp) {
             refund();
             revert("Contract expired");
@@ -105,6 +105,17 @@ contract FamilyPlan is Ownable {
             usdt.allowance(msg.sender, address(this)) >= amount,
             "Check the token allowance"
         );
+
+        address payable addr = payable(msg.sender);
+        User storage currUser = userPayments[addr];
+
+        currUser.amountPaid = currUser.amountPaid + amount;
+        currUser.amountOwed = userEmails[email];
+        currUser.walletAddress = addr;
+        currUser.email = email;
+
+        userPayments[addr] = currUser;
+
         usdt.transferFrom(msg.sender, address(this), amount);
         userPayments[msg.sender].amountPaid =
             amount +
@@ -118,7 +129,6 @@ contract FamilyPlan is Ownable {
                 userPayments[msg.sender].amountOwed;
             userPayments[msg.sender].amountPaid = userPayments[msg.sender]
                 .amountOwed;
-            address payable addr = payable(msg.sender);
             addr.transfer(refundAmount);
         }
 
