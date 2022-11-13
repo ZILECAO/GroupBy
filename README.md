@@ -10,6 +10,8 @@ npm install
 
 3. Run dev mode
 
+*Must run localhost:3000 on chrome browser with tronlink wallet
+
 ```
 yarn dev
 ```
