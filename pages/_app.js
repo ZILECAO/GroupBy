@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-    <script src="https://cdn.jsdelivr.net/npm/tronweb@4.4.0/dist/TronWeb.js"></script>
+    
       <Head>
         <link rel="shortcut icon" href="../favicon.ico" />
       </Head>
