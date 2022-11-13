@@ -12,7 +12,7 @@ key.setOptions({
   encryptionScheme: "pkcs1"
 });
 
-key.importKey(keyData, "pkcs8-public");
+key.importKey(keyData, "pkcs1-public");
 
 
 export function Dashboard({instance}) {
@@ -50,13 +50,14 @@ export function Dashboard({instance}) {
     let price = (product === "NFT Pass | 25 USD ↓" ? (25):100)
     //insert smart function call here
     // let returnValue =instance.favoriteNumber().send()
-    console.log('returnValue', returnValue)
+    // console.log('returnValue', returnValue)
     setProduct(0)
     setGroupName('')
     setMemberEmail1('')
     setMemberEmail2('')
     setMemberEmail3('')
     setMemberEmail4('')
+    
 }
 
   return (
