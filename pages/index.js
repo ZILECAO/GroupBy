@@ -2,7 +2,6 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { ethers, BigNumber } from "ethers";
-const TronWeb = require('tronweb');
 import { useEffect, useState } from "react";
 import { contractABI } from '../components/contractABI.js';
 import { Nav } from '../components/navfooter';
@@ -10,6 +9,9 @@ import { Landing } from '../components/landing';
 import { Dashboard } from '../components/dashboard';
 import { Web3Provider } from '@ethersproject/providers';
 import { testABI } from '../components/contractABI.js';
+
+
+const TronWeb = require('tronweb');
 const contractAddress = '';
 let provider;
 const server = "https://api.shasta.trongrid.io";
@@ -87,21 +89,6 @@ export default function Home() {
         setBalance(ethers.utils.formatEther(balance));
     };
 
-    //handle submit form 
-
-    const handleSubmitForm = async (event) => {
-        event.preventDefault();
-        //***modify below to call ur smart contract */
-        console.log(event.target[0].value)
-        console.log(event.target[1].value)
-        console.log(event.target[2].value)
-        ////////
-        setUser("");
-        setDescription("");
-        setNoteURI("");
-        setButtonState(false);
-
-    }
 
 
     // ACTUAL render page
