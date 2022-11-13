@@ -282,7 +282,7 @@ export function Dashboard({ instance }) {
 
 
                         <p className="mb-4 text-green-800 text-lg justify-start">
-                          Total: $40 -> $10 per person
+                          Total: $40 -&gt; $10 per person
 
                         </p>
                         <p className="mb-4 text-red-800 text-lg justify-start">

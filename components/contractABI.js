@@ -299,9 +299,4 @@ export const contractABI = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-<<<<<<< HEAD
 ];
-=======
-]
-export const testABI = [{"inputs":[],"name":"favoriteNumber","outputs":[{"internalType":"int256","name":"","type":"int256"}],"stateMutability":"pure","type":"function"}];
->>>>>>> 7cbbc239ba996ce95d7dacf326407a9044fe33cd
