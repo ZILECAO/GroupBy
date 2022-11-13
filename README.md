@@ -1,4 +1,6 @@
-## Slide deck presentation: https://gateway.pinata.cloud/ipfs/QmThytReLYmTqRjaPfXaQpvp3RqyDvuEkMfYs8F9rthaDU
+## Slide deck presentation: 
+
+https://gateway.pinata.cloud/ipfs/QmThytReLYmTqRjaPfXaQpvp3RqyDvuEkMfYs8F9rthaDU
 
 
 ## How to install on your computer 
