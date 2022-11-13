@@ -7,15 +7,12 @@ import { contractABI } from '../components/contractABI.js';
 import { Nav } from '../components/navfooter';
 import { Landing } from '../components/landing';
 import { Dashboard } from '../components/dashboard';
-import { Web3Provider } from '@ethersproject/providers';
-import { testABI } from '../components/contractABI.js';
 
 
 const TronWeb = require('tronweb');
-const contractAddress = '';
 let provider;
 const server = "https://api.shasta.trongrid.io";
-const address = "TPbCp2b2PEwny7GVKBUtTnyhuUbLN4vNp6";
+const address = "TPczbANiN2Kqa7x1omVyhJBUqfAZtAdHs7";
 const tronweb = new TronWeb({ fullHost: server, solidityNode: server, eventServer: server, privateKey: process.env.PRIVATE_KEY });
 
 if (typeof window !== 'undefined' && typeof window.tronWeb !== 'undefined') {
@@ -33,7 +30,7 @@ else {
 
 let instance;
 
-instance = tronweb.contract(testABI, address);
+instance = tronweb.contract(contractABI, address);
 
 
 export default function Home() {
