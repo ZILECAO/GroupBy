@@ -1,10 +1,41 @@
 import React from 'react'
 import { useState } from 'react';
 
-export function Dashboard() {
+export function Dashboard({instance}) {
 
   const [showModal, setShowModal] = useState(false);
+  const [product, setProduct] = useState("NFT Pass | 25 USD ↓");
+  const [groupName,setGroupName] = useState("");
+  const [memberEmail1,setMemberEmail1] = useState([]);
+  const [memberEmail2,setMemberEmail2] = useState([]);
+  const [memberEmail3,setMemberEmail3] = useState([]);
+  const [memberEmail4,setMemberEmail4] = useState([]);
+  
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if (!product || !groupName || !memberEmail1 || !memberEmail2 || !memberEmail3 || !memberEmail4) {
+        alert('incomplete fields')
+        return
+    }
 
+    
+    console.log(`product is ${product}`)
+    console.log(`group name is ${groupName}`)
+    console.log(`member 1 is ${memberEmail1}`)
+    console.log(`member 2 is ${memberEmail2}`)
+    console.log(`member 3 is ${memberEmail3}`)
+    console.log(`member 4 is ${memberEmail4}`)
+    let price = (product === "NFT Pass | 25 USD ↓" ? (25):100)
+    //insert smart function call here
+    // let returnValue =instance.favoriteNumber().send()
+    console.log('returnValue', returnValue)
+    setProduct(0)
+    setGroupName('')
+    setMemberEmail1('')
+    setMemberEmail2('')
+    setMemberEmail3('')
+    setMemberEmail4('')
+}
 
   return (
     <section class="text-black bg-white">
@@ -67,6 +98,7 @@ export function Dashboard() {
                             id="countries"
                             required={true}
                             className="shadow appearance-none border bg-blue-700 rounded w-full py-2 px-3 text-white mb-3 leading-tight"
+                            onChange={(e) => setProduct(e.target.value)}
                           >
                             <option>
                               NFT Pass | 25 USD ↓
@@ -88,6 +120,8 @@ export function Dashboard() {
                             id="name"
                             type="name"
                             placeholder="BlueBarry"
+                            value={groupName}
+                            onChange={(e) => setGroupName(e.target.value)}
                             required={true} />
 
                         </div>
@@ -99,9 +133,35 @@ export function Dashboard() {
                         <div class="mb-6">
 
                           <input class="shadow appearance-none border bg-gray-200 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
-                            id="email"
+                            id="email1"
                             type="email"
                             placeholder="name@groupby.com"
+                            value={memberEmail1}
+                            onChange={(e) => setMemberEmail1(e.target.value)}
+                            required={true}
+                          />
+                          <input class="shadow appearance-none border bg-gray-200 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
+                            id="email2"
+                            type="email"
+                            placeholder="name@groupby.com"
+                            value={memberEmail2}
+                            onChange={(e) => setMemberEmail2(e.target.value)}
+                            required={true}
+                          />
+                          <input class="shadow appearance-none border bg-gray-200 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
+                            id="email3"
+                            type="email"
+                            placeholder="name@groupby.com"
+                            value={memberEmail3}
+                            onChange={(e) => setMemberEmail3(e.target.value)}
+                            required={true}
+                          />
+                          <input class="shadow appearance-none border bg-gray-200 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight"
+                            id="email4"
+                            type="email"
+                            placeholder="name@groupby.com"
+                            value={memberEmail4}
+                            onChange={(e) => setMemberEmail4(e.target.value)}
                             required={true}
                           />
 
@@ -110,7 +170,7 @@ export function Dashboard() {
 
                         <p className="my-2 pt-4 text-slate-500 text-lg leading-relaxed">
                           4. Final amount per person:
-                          x
+                          {product === "NFT Pass | 25 USD ↓" ? (25):100}
                         </p>
 
 
@@ -120,7 +180,7 @@ export function Dashboard() {
                         <button
                           className="bg-blue-700 text-white hover:bg-blue-800 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none justify-center"
                           type="button"
-                          onClick={() => setShowModal(false)}
+                          onClick={onSubmit}
                         >
                           Create Group
                         </button>
