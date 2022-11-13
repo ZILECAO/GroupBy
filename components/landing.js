@@ -3,13 +3,13 @@ import Link from 'next/link'
 export function Landing() {
 
     return (
-        <div class="px-6 pt-20 pb-40 bg-cover bg-slate-900 h-screen’">
+        <div class="px-6 pt-20 pb-44 bg-cover h-screen’">
             <div class=" p-10 mx-auto text-center ">
-                <h1 class="p-2 text-5xl font-medium font-mono text-slate-400">
+                <h1 class="p-2 text-6xl font-medium font-mono text-slate-400">
                     Group purchase <a class="underline decoration-indigo-500 ">made simple</a>
                 </h1>
 
-                <h1 class="pb-2 text-5xl font-medium font-mono text-slate-400">
+                <h1 class="pb-2 text-6xl font-medium font-mono text-slate-400">
                     for on-chain businesses
                 </h1>
 
@@ -23,13 +23,13 @@ export function Landing() {
 
                 <div class="flex font-mono flex-wrap justify-center mt-8 gap-4">
                     <Link href="/home">
-                        <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-black border hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring animate-pulse">
+                        <a class="block w-full px-8 py-3 text-xs font-xs text-white bg-gray-800 hover:bg-gray-900 rounded-full sm:w-auto focus:outline-none focus:ring animate-pulse">
                             Learn More
                         </a>
                     </Link>
 
                     <a
-                        class="block font-mono w-full px-8 py-3 text-xs font-xs text-black bg-gray-300 border rounded-full sm:w-auto hover:bg-gray-400 active:bg-blue-500 focus:outline-none focus:ring"
+                        class="block font-mono w-full px-8 py-3 text-xs font-xs text-black bg-gray-300 rounded-full sm:w-auto hover:bg-gray-400  focus:outline-none focus:ring"
                         href="https://github.com/ZILECAO/easyA-hackathon"
                     >
                         View Code
