@@ -4,8 +4,8 @@ pragma solidity ^0.8.7;
 
 // things left to do
 
-import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 // import ownable
 contract FamilyPlan is Ownable {
@@ -37,6 +37,7 @@ contract FamilyPlan is Ownable {
     string public familyPlanProvider;
     IERC20 usdt;
     mapping(address => User) public userPayments;
+    User[] public data;
     // so we can iterate through the map
     address payable[] private users;
     FAMILY_PLAN_STATE public familyPlanStatus;
@@ -70,7 +71,8 @@ contract FamilyPlan is Ownable {
         // initializing variables based on inputs
         familyPlanProvider = _familyPlanProvider;
         startTimestamp = block.timestamp;
-        udst = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
+        // 0xdAC17F958D2ee523a2206206994597C13D831ec7
+        usdt = IERC20(TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t);
         require(
             family.length == amountOwed.length &&
                 amountOwed.length == emails.length,
@@ -78,12 +80,9 @@ contract FamilyPlan is Ownable {
         );
         familyPlanStatus = FAMILY_PLAN_STATE.ONBOARDING;
         for (uint256 i = 0; i < family.length; i++) {
-            userPayments[family[i]] = User(
-                family[i],
-                emails[i],
-                amountOwed[i],
-                0
-            );
+            User memory newUser = User(family[i], emails[i], amountOwed[i], 0);
+            userPayments[family[i]] = newUser;
+            data.push(newUser);
             users.push(family[i]);
         }
         endTimestamp = startTimestamp + (86400 * expiration);
@@ -115,12 +114,12 @@ contract FamilyPlan is Ownable {
             userPayments[msg.sender].amountPaid >
             userPayments[msg.sender].amountOwed
         ) {
-            uint256 refund = userPayments[msg.sender].amountPaid -
+            uint256 refundAmount = userPayments[msg.sender].amountPaid -
                 userPayments[msg.sender].amountOwed;
             userPayments[msg.sender].amountPaid = userPayments[msg.sender]
                 .amountOwed;
             address payable addr = payable(msg.sender);
-            addr.transfer(refund);
+            addr.transfer(refundAmount);
         }
 
         // check if state should change
@@ -142,7 +141,7 @@ contract FamilyPlan is Ownable {
     }
 
     // calls oracle
-    function submitPayment() internal payable {
+    function submitPayment() internal {
         // need Brandon's help with this
     }
 
@@ -184,14 +183,14 @@ contract FamilyPlan is Ownable {
         state = familyPlanStatus;
     }
 
-    function getProvider() public view returns (string provider) {
+    function getProvider() public view returns (string memory provider) {
         provider = familyPlanProvider;
     }
 
     function haveTheyPaid(address payable addr)
         public
         view
-        returns (boolean paid)
+        returns (bool paid)
     {
         if (userPayments[addr].amountPaid >= userPayments[addr].amountOwed) {
             paid = true;
@@ -203,23 +202,28 @@ contract FamilyPlan is Ownable {
     function paidStatistics()
         public
         view
-        returns (address payable[] havePaid, address payable[] notPaid)
+        returns (
+            address payable[] memory havePaid,
+            address payable[] memory notPaid
+        )
     {
+        address payable[] memory _havePaid;
+        address payable[] memory _notPaid;
         for (uint256 i = 0; i < users.length; i++) {
             if (
                 userPayments[users[i]].amountPaid >=
                 userPayments[users[i]].amountOwed
             ) {
-                havePaid.push(users[i]);
+                _havePaid[i] = users[i];
             } else {
-                notPaid.push(users[i]);
+                _notPaid[i] = users[i];
             }
         }
+        havePaid = _havePaid;
+        notPaid = _notPaid;
     }
 
-    function userData() public view returns (User[] people) {
-        for (uint256 i = 0; i < users.length; i++) {
-            people.push(userPayments(users[i]));
-        }
+    function userData() public view returns (User[] memory) {
+        return data;
     }
 }
