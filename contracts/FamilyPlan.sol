@@ -4,8 +4,8 @@ pragma solidity ^0.8.7;
 
 // things left to do
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "../node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 // import ownable
 contract FamilyPlan is Ownable {
