@@ -5,6 +5,7 @@
 
 ```
 yarn install 
+npm install
 ```
 
 3. Run dev mode
