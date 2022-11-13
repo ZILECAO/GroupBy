@@ -1,1 +1,2 @@
 export const contractABI = [];
+export const testABI = [{"inputs":[],"name":"favoriteNumber","outputs":[{"internalType":"int256","name":"","type":"int256"}],"stateMutability":"pure","type":"function"}];

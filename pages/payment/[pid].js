@@ -1,5 +1,30 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { testABI } from '../../components/contractABI';
+
+const TronWeb = require('tronweb');
+const contractAddress = '';
+
+// let provider;
+// //no tron wallet case
+// if (typeof window !== 'undefined' && typeof window.tronWeb !== 'undefined') {
+//     // we are in the browser and metamask is running
+//     window.tronWeb.request({ method: "tron_requestAccounts" });
+//     // provider = new TronWeb.providers.HttpProvider(window.tronWeb);
+//     provider = new TronWeb.providers.HttpProvider("https://rpc.ankr.com/http/tron");
+// }
+// else {
+//     // we are on the server *OR* the user is not running metamask
+//     // https://medium.com/jelly-market/how-to-get-infura-api-key-e7d552dd396f
+//     provider = new TronWeb.providers.HttpProvider("https://rpc.ankr.com/http/tron");
+//     // provider = new ethers.providers.Web3Provider(provider);
+// }
+
+const server = "https://api.shasta.trongrid.io";
+const address = "TPbCp2b2PEwny7GVKBUtTnyhuUbLN4vNp6";
+const tronWeb = new TronWeb({fullHost:server, solidityNode:server, eventServer:server, privateKey: process.env.PRIVATE_KEY});
+
+tronWeb.setAddress(address);
 
 const PaymentPage = () => {
   const router = useRouter()
@@ -7,10 +32,28 @@ const PaymentPage = () => {
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
   
+//   let instance;
+//   const getContract = async () => {
+//     let instance = await tronWeb.contract(testABI,address);
+//   }
 
-  const fromWhom ='fromWhom';//onchain data-> lookup from gid
-  const forWhat ='forWhat';//onchain data-> lookup from gid
-  const howMuch ='howMuch';//onchain data-> lookup from gid
+//   const getOwner = async () => {
+//     const owner = await instance.owner().call();
+//   }
+//   const getProvider = async () => {
+//     const provider = await instance.getProvider().call();
+//     }
+//     //not yet implemented
+//   const getHowMuch = async () => {
+//     const howMuch = await instance.howMuch().call();
+//     }
+// //   getContract();
+//   const fromWhom = getOwner();
+//   const forWhat = getProvider();
+//   const howMuch =getHowMuch();
+  const fromWhom ='';
+  const forWhat = '';
+  const howMuch ='';
 
   const onSubmit=(e)=>{
     e.preventDefault()
@@ -28,7 +71,10 @@ const PaymentPage = () => {
 const submitTrasaction=async(e)=>{
     e.preventDefault()
     //
-    let instance = await tronWeb.contract().at('TBBp5VF2q73hfMUoyxr138Kx3kbsi6HQRS');
+    
+   
+    
+    console.log ('callResult',callResult)
     
 }
   const getPaidUsers = [1,2];
