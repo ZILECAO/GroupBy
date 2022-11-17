@@ -8,6 +8,11 @@ https://gateway.pinata.cloud/ipfs/QmThytReLYmTqRjaPfXaQpvp3RqyDvuEkMfYs8F9rthaDU
 https://www.loom.com/share/fa01a8870d8240be9e1aff6e48277425
 
 
+## Show some love to the Twitter post:
+
+https://twitter.com/zile_cao/status/1592326021168390145?s=20&t=zeZCcQIvdYkPi_vrHxVC_A
+
+
 ## Live Website:
 
 *Must have TronLink wallet installed on Chrome!*
