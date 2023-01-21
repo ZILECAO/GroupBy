@@ -68,7 +68,7 @@ export default function Home() {
 
     useEffect(() => {
         connectAccounts();
-        const publicAddress = tronWeb.defaultAddress.base58
+        const publicAddress = TronWeb.defaultAddress
         setAccounts(publicAddress);
         if (accounts.length > 0) {
             setAuthenticated(true);
